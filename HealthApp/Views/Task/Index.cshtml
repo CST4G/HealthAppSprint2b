@@ -1,0 +1,95 @@
+﻿@model IEnumerable<healthApp.Models.Tasks>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Task)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dtStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dtEnd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.freq)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.interval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.count)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.byDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.byMonthDay)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Task)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.duration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dtStart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dtEnd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.freq)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.interval)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.count)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.byDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.byMonthDay)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+</table>
+<div>
+@Html.ActionLink("Generate Schedule", "GenerateSched", null, new { data_transition = "slide", data_role = "button", data_theme = "c" })
+</div>

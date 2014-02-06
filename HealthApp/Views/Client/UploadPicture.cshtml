@@ -1,0 +1,47 @@
+﻿@model healthApp.Models.Client
+
+@{
+    ViewBag.Title = "UploadPicture";
+}
+
+<script>
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#img')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(150);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+
+</script>
+@{
+    ViewBag.Title = "Photo Upload";
+}
+
+<h2>Upload Photo</h2>
+
+<img id="img" height="150" width="150" src="@Url.Content("Client/ViewImage/" + @Html.DisplayFor(model => model.ClientID))" />
+@using (Html.BeginForm("Upload", "Client", FormMethod.Post, new { enctype = "multipart/form-data", id = "PhotoForm" }))
+{
+    <legend>Photo Upload</legend>
+    <br />
+
+    <input type="file" name="file" id="photoFile" style="width: 100%;" onchange="readURL(this)" />
+    <input type="text" name="id" id="clientId" value=@Html.DisplayFor(model => model.ClientID) hidden=" hidden"><p>
+        <input type="submit" value="Upload" />
+    </p>
+
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

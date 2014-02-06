@@ -1,0 +1,90 @@
+﻿@model healthApp.Models.Client
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Client</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientMarital)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientMarital)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientDOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientDOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientHealthNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientHealthNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientGender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientGender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientBedNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientBedNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientFamilyDoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientFamilyDoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientPicture)
+        </dt>
+        <dd>
+            <img src="@Url.Content("~/Client/ViewImage/" + @Html.DisplayFor(model => model.ClientID))" style="height: 98px; width: 103px" />
+            
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ClientID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
