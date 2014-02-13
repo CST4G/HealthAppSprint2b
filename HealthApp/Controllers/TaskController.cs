@@ -24,27 +24,8 @@ namespace healthApp.Controllers
             String[] days = { "Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat" };
             String dow = days[(int)date.DayOfWeek]; //day of week
             int dom = date.Day;
-
-            var tasks = from s in db.Tasks
-                        where
-                            // CONDITIONS: these will depend on the Calendar format that we choose
-                            //every day, end date defined
-                            (s.dtStart <= date && s.dtEnd >= date && s.freq.Equals("daily") && DbFunctions.DiffDays(date, s.dtStart) % s.interval == 0) //s.interval == 1 && 
-                            ||           //every day, count defined
-                            (s.dtStart <= date && DbFunctions.AddDays(s.dtStart, s.count) >= date && s.freq.Equals("daily") && DbFunctions.DiffDays(date, s.dtStart) % s.interval == 0)
-                            ||          //every week, end date defined 
-                            (s.dtStart <= date && s.dtEnd >= date && s.freq.Equals("weekly") && s.byDay.Contains(dow)
-                                    && (DbFunctions.DiffDays(date, DbFunctions.AddDays(s.dtStart, -s.dtStartWD)) / 7) % s.interval == 0)
-                            ||          //every week, count defined
-                            (s.dtStart <= date && DbFunctions.AddDays(s.dtStart, s.count * 7) >= date && s.freq.Equals("weekly") && s.byDay.Contains(dow)
-                                    && (DbFunctions.DiffDays(date, DbFunctions.AddDays(s.dtStart, -s.dtStartWD)) / 7) % s.interval == 0)
-                            ||          //every month, end date defined        
-                            (s.dtStart <= date && s.freq.Equals("monthly") && DbFunctions.AddMonths(s.dtStart, s.count) >= date
-                                     && s.byMonthDay == dom && DbFunctions.DiffMonths(date, s.dtStart) % s.interval == 0)
-                            ||          //every month, count defined        
-                            (s.dtStart <= date && s.freq.Equals("monthly") && s.dtEnd >= date
-                                     && s.byMonthDay == dom && DbFunctions.DiffMonths(date, s.dtStart) % s.interval == 0)
-                        select s;
+            //call static method from tasks model to get all the tasks needed to generate schedule. 
+            var tasks = Tasks.getTasks(db, date, dow, dom);
 
             Schedule sc = new Schedule();
             //populate schedule with new records
@@ -62,6 +43,8 @@ namespace healthApp.Controllers
             db.SaveChanges();
             return View(db.Tasks.ToList());
         }
+
+        
 
         // GET: /Task/Details/5
         public ActionResult Details(int? id)

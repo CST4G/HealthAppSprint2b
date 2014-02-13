@@ -60,6 +60,36 @@ namespace healthApp.Models
             //start date day of week
             dtStartWD = (int)dtStart.DayOfWeek;
         }
+        public static IQueryable<Tasks> getTasks(TaskDBContext db, DateTime date, String dow, int dom)
+        {
+            var tasks = from s in db.Tasks
+                        where
+                            // CONDITIONS: these will depend on the Calendar format that we choose
+                            //every day, end date defined
+                            (s.dtStart <= date && s.dtEnd >= date && s.freq.Equals("daily") && DbFunctions.DiffDays(date, s.dtStart) % s.interval == 0)
+                            //s.interval == 1 && 
+                            ||
+                            //every day, count defined
+                            (s.dtStart <= date && DbFunctions.AddDays(s.dtStart, s.count) >= date && s.freq.Equals("daily") && DbFunctions.DiffDays(date, s.dtStart) % s.interval == 0)
+                            ||
+                            //every week, end date defined 
+                            (s.dtStart <= date && s.dtEnd >= date && s.freq.Equals("weekly") && s.byDay.Contains(dow)
+                                    && (DbFunctions.DiffDays(date, DbFunctions.AddDays(s.dtStart, -s.dtStartWD)) / 7) % s.interval == 0)
+                            ||
+                            //every week, count defined
+                            (s.dtStart <= date && DbFunctions.AddDays(s.dtStart, s.count * 7) >= date && s.freq.Equals("weekly") && s.byDay.Contains(dow)
+                                    && (DbFunctions.DiffDays(date, DbFunctions.AddDays(s.dtStart, -s.dtStartWD)) / 7) % s.interval == 0)
+                            ||
+                            //every month, end date defined        
+                            (s.dtStart <= date && s.freq.Equals("monthly") && DbFunctions.AddMonths(s.dtStart, s.count) >= date
+                                     && s.byMonthDay == dom && DbFunctions.DiffMonths(date, s.dtStart) % s.interval == 0)
+                            ||
+                            //every month, count defined        
+                            (s.dtStart <= date && s.freq.Equals("monthly") && s.dtEnd >= date
+                                     && s.byMonthDay == dom && DbFunctions.DiffMonths(date, s.dtStart) % s.interval == 0)
+                        select s;
+            return tasks;
+        }
     }
 
     public class TaskDBContext : DbContext
