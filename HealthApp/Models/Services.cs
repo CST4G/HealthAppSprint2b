@@ -28,7 +28,7 @@ namespace healthApp.Models
         public int duration { get; set; } // e.g. e hrs
 
         [Display(Name = "Start Date")]
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)] //to show a calendar to pick a date
         public DateTime dtStart { get; set; }
 
@@ -70,7 +70,7 @@ namespace healthApp.Models
                             //s.interval == 1 && 
                             ||
                             //every day, count defined
-                            (s.dtStart <= date && DbFunctions.AddDays(s.dtStart, s.count) >= date && s.freq.Equals("daily") && DbFunctions.DiffDays(date, s.dtStart) % s.interval == 0)
+                            (s.dtStart <= date && DbFunctions.AddDays(s.dtStart, s.count) >= date && s.freq.Equals("daily") && DbFunctions.DiffDays(date, s.dtStart) % s.interval == 0) //
                             ||
                             //every week, end date defined 
                             (s.dtStart <= date && s.dtEnd >= date && s.freq.Equals("weekly") && s.byDay.Contains(dow)
