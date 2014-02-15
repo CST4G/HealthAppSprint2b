@@ -58,7 +58,7 @@ namespace healthApp.DAL {
                 new Services{ID=5, created=DateTime.Now, PatientID="5", Task="Feed", duration=1, dtStart=yesterday, freq="daily", count=4},
             };
 
-            tasks.ForEach( s => context.Tasks.Add( s ) );
+            tasks.ForEach( s => context.Services.Add( s ) );
             context.SaveChanges();
         }
     }

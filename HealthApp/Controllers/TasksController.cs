@@ -17,13 +17,13 @@ namespace healthApp.Controllers
         // GET: /Schedule/
         public ActionResult Index()
         {
-            return View(db.Sched.ToList());
+            return View(db.Tasks.ToList());
         }
 
         //open TaskComplete view to add comments and actual time
         public ActionResult TaskComplete(int id = 0)
         {
-            Tasks task = db.Sched.Find(id);
+            Tasks task = db.Tasks.Find(id);
             if (task == null)
             {
                 return HttpNotFound();
@@ -52,7 +52,7 @@ namespace healthApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tasks schedule = db.Sched.Find(id);
+            Tasks schedule = db.Tasks.Find(id);
             if (schedule == null)
             {
                 return HttpNotFound();
@@ -75,7 +75,7 @@ namespace healthApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Sched.Add(schedule);
+                db.Tasks.Add(schedule);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -90,7 +90,7 @@ namespace healthApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tasks schedule = db.Sched.Find(id);
+            Tasks schedule = db.Tasks.Find(id);
             if (schedule == null)
             {
                 return HttpNotFound();
@@ -121,7 +121,7 @@ namespace healthApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tasks schedule = db.Sched.Find(id);
+            Tasks schedule = db.Tasks.Find(id);
             if (schedule == null)
             {
                 return HttpNotFound();
@@ -134,8 +134,8 @@ namespace healthApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Tasks schedule = db.Sched.Find(id);
-            db.Sched.Remove(schedule);
+            Tasks schedule = db.Tasks.Find(id);
+            db.Tasks.Remove(schedule);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

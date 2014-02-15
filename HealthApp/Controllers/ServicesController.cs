@@ -14,7 +14,7 @@ namespace healthApp.Controllers
         // GET: /Task/
         public ActionResult Index()
         {
-            return View(db.Tasks.ToList());
+            return View(db.Services.ToList());
         }
 
         //populate today's Shedule based on Tasks
@@ -37,7 +37,7 @@ namespace healthApp.Controllers
                 sc.RoomNo = item.RoomNo;
                 sc.duration = item.duration;
                 sc.tDate = DateTime.Today + item.dtStart.TimeOfDay;
-                db.Sched.Add(sc);
+                db.Tasks.Add(sc);
             }
 
             db.SaveChanges();
@@ -53,7 +53,7 @@ namespace healthApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Services tasks = db.Tasks.Find(id);
+            Services tasks = db.Services.Find(id);
             if (tasks == null)
             {
                 return HttpNotFound();
@@ -75,7 +75,7 @@ namespace healthApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Tasks.Add(tasks);
+                db.Services.Add(tasks);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -90,7 +90,7 @@ namespace healthApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Services tasks = db.Tasks.Find(id);
+            Services tasks = db.Services.Find(id);
             if (tasks == null)
             {
                 return HttpNotFound();
@@ -120,7 +120,7 @@ namespace healthApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Services tasks = db.Tasks.Find(id);
+            Services tasks = db.Services.Find(id);
             if (tasks == null)
             {
                 return HttpNotFound();
@@ -132,8 +132,8 @@ namespace healthApp.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Services tasks = db.Tasks.Find(id);
-            db.Tasks.Remove(tasks);
+            Services tasks = db.Services.Find(id);
+            db.Services.Remove(tasks);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

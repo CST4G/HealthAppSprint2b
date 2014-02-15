@@ -62,7 +62,7 @@ namespace healthApp.Models
         }
         public static IQueryable<Services> getTasks(ServicesDBContext db, DateTime date, String dow, int dom)
         {
-            var tasks = from s in db.Tasks
+            var tasks = from s in db.Services
                         where
                             // CONDITIONS: these will depend on the Calendar format that we choose
                             //every day, end date defined
