@@ -17,23 +17,7 @@ namespace healthApp.Controllers
         // GET: /Schedule/
         public ActionResult Index()
         {
-            String userID = "morning";
-            DateTime shiftStart = DateTime.Today;
-            DateTime shiftEnd = DateTime.Today;
-            if (userID.Equals("morning"))
-            {
-                shiftStart = DateTime.Today;
-                shiftEnd = DateTime.Today.AddHours(12);
-            }
-            else if (userID.Equals("evening"))
-            {
-                shiftStart = DateTime.Today.AddHours(12);
-                shiftEnd = DateTime.Today.AddHours(24);
-            }
-            var tasks = from s in db.Tasks
-                        where (s.tDate >= shiftStart && s.tDate <= shiftEnd)
-                        select s;            
-            return View(tasks);
+            return View(db.Tasks.ToList());
         }
 
         //open TaskComplete view to add comments and actual time
