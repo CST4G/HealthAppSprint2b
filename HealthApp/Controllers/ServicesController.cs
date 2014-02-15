@@ -102,7 +102,7 @@ namespace healthApp.Controllers
             return View(tasks);
         }
         [HttpPost]
-        public ActionResult AAAAddServices([Bind(Include = "ID,PatientID,RoomNo,Task,duration,dtStart,dtEnd,freq,interval,count,byDay,byMonthDay")] Services tasks)
+        public ActionResult AddServices([Bind(Include = "ID,PatientID,RoomNo,Task,duration,dtStart,dtEnd,freq,interval,count,byDay,byMonthDay")] Services tasks)
         {
             if (ModelState.IsValid)
             {
