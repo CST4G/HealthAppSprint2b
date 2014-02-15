@@ -14,6 +14,7 @@ namespace healthApp.Controllers
     public class ClientController : Controller
     {
         private ClientDBContext db = new ClientDBContext();
+        private ServicesDBContext serviceDB = new ServicesDBContext();
 
         // GET: /Clients/
         public ActionResult Index(int? id)
@@ -246,6 +247,12 @@ namespace healthApp.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult GetServices(int id)
+        {
+            var tasks = Services.listServices(serviceDB, id);
+            return View(tasks);
         }
 	}
 }

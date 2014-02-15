@@ -238,6 +238,8 @@
     <Content Include="Views\Services\Edit.cshtml" />
     <Content Include="Views\Services\GenerateSched.cshtml" />
     <Content Include="Views\Services\Index.cshtml" />
+    <Content Include="Views\Client\GetServices.cshtml" />
+    <Content Include="Views\Services\AddServices.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

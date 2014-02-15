@@ -90,6 +90,14 @@ namespace healthApp.Models
                         select s;
             return tasks;
         }
+
+        public static List<Services> listServices(ServicesDBContext db, int id)
+        {
+            String query = "select * from Services where PatientID = " + id.ToString();
+                        
+            var sqlResults = db.Services.SqlQuery(query);
+            return  sqlResults.ToList();
+        }
     }
 
     public class ServicesDBContext : DbContext
