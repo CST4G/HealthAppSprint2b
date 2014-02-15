@@ -10,9 +10,9 @@ using healthApp.Models;
 
 namespace healthApp.Controllers
 {
-    public class ScheduleController : Controller
+    public class TasksController : Controller
     {
-        private TaskDBContext db = new TaskDBContext();
+        private ServicesDBContext db = new ServicesDBContext();
 
         // GET: /Schedule/
         public ActionResult Index()
@@ -23,7 +23,7 @@ namespace healthApp.Controllers
         //open TaskComplete view to add comments and actual time
         public ActionResult TaskComplete(int id = 0)
         {
-            Schedule task = db.Sched.Find(id);
+            Tasks task = db.Sched.Find(id);
             if (task == null)
             {
                 return HttpNotFound();
@@ -34,7 +34,7 @@ namespace healthApp.Controllers
         // save updated task record with added comments and actual time
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult TaskComplete(Schedule t)
+        public ActionResult TaskComplete(Tasks t)
         {
             if (ModelState.IsValid)
             {
@@ -52,7 +52,7 @@ namespace healthApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Schedule schedule = db.Sched.Find(id);
+            Tasks schedule = db.Sched.Find(id);
             if (schedule == null)
             {
                 return HttpNotFound();
@@ -71,7 +71,7 @@ namespace healthApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ID,taskID,PatientID,RoomNo,Task,tDate,duration,actual,comments")] Schedule schedule)
+        public ActionResult Create([Bind(Include="ID,taskID,PatientID,RoomNo,Task,tDate,duration,actual,comments")] Tasks schedule)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace healthApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Schedule schedule = db.Sched.Find(id);
+            Tasks schedule = db.Sched.Find(id);
             if (schedule == null)
             {
                 return HttpNotFound();
@@ -103,7 +103,7 @@ namespace healthApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ID,taskID,PatientID,RoomNo,Task,tDate,duration,actual,comments")] Schedule schedule)
+        public ActionResult Edit([Bind(Include="ID,taskID,PatientID,RoomNo,Task,tDate,duration,actual,comments")] Tasks schedule)
         {
             if (ModelState.IsValid)
             {
@@ -121,7 +121,7 @@ namespace healthApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Schedule schedule = db.Sched.Find(id);
+            Tasks schedule = db.Sched.Find(id);
             if (schedule == null)
             {
                 return HttpNotFound();
@@ -134,7 +134,7 @@ namespace healthApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Schedule schedule = db.Sched.Find(id);
+            Tasks schedule = db.Sched.Find(id);
             db.Sched.Remove(schedule);
             db.SaveChanges();
             return RedirectToAction("Index");

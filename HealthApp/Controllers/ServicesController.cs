@@ -7,9 +7,9 @@ using System.Web.Mvc;
 
 namespace healthApp.Controllers
 {
-    public class TaskController : Controller
+    public class ServicesController : Controller
     {
-        private TaskDBContext db = new TaskDBContext();
+        private ServicesDBContext db = new ServicesDBContext();
 
         // GET: /Task/
         public ActionResult Index()
@@ -25,9 +25,9 @@ namespace healthApp.Controllers
             String dow = days[(int)date.DayOfWeek]; //day of week
             int dom = date.Day;
             //call static method from tasks model to get all the tasks needed to generate schedule. 
-            var tasks = Tasks.getTasks(db, date, dow, dom);
+            var tasks = Services.getTasks(db, date, dow, dom);
 
-            Schedule sc = new Schedule();
+            Tasks sc = new Tasks();
             //populate schedule with new records
             foreach (var item in tasks)
             {
@@ -53,7 +53,7 @@ namespace healthApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tasks tasks = db.Tasks.Find(id);
+            Services tasks = db.Tasks.Find(id);
             if (tasks == null)
             {
                 return HttpNotFound();
@@ -71,7 +71,7 @@ namespace healthApp.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create([Bind(Include = "ID,PatientID,RoomNo,Task,duration,dtStart,dtEnd,freq,interval,count,byDay,byMonthDay")] Tasks tasks)
+        public ActionResult Create([Bind(Include = "ID,PatientID,RoomNo,Task,duration,dtStart,dtEnd,freq,interval,count,byDay,byMonthDay")] Services tasks)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace healthApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tasks tasks = db.Tasks.Find(id);
+            Services tasks = db.Tasks.Find(id);
             if (tasks == null)
             {
                 return HttpNotFound();
@@ -102,7 +102,7 @@ namespace healthApp.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "ID,PatientID,RoomNo,Task,duration,dtStart,dtEnd,freq,interval,count,byDay,byMonthDay")] Tasks tasks)
+        public ActionResult Edit([Bind(Include = "ID,PatientID,RoomNo,Task,duration,dtStart,dtEnd,freq,interval,count,byDay,byMonthDay")] Services tasks)
         {
             if (ModelState.IsValid)
             {
@@ -120,7 +120,7 @@ namespace healthApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tasks tasks = db.Tasks.Find(id);
+            Services tasks = db.Tasks.Find(id);
             if (tasks == null)
             {
                 return HttpNotFound();
@@ -132,7 +132,7 @@ namespace healthApp.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Tasks tasks = db.Tasks.Find(id);
+            Services tasks = db.Tasks.Find(id);
             db.Tasks.Remove(tasks);
             db.SaveChanges();
             return RedirectToAction("Index");

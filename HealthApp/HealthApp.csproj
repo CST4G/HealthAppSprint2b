@@ -189,8 +189,8 @@
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\ScheduleController.cs" />
-    <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Controllers\TasksController.cs" />
+    <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Controllers\UserProfileObj.cs" />
     <Compile Include="DAL\myInit.cs" />
     <Compile Include="Global.asax.cs">
@@ -202,8 +202,8 @@
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Credentials.cs" />
     <Compile Include="Models\CustomTaskValidationAttributes.cs" />
-    <Compile Include="Models\Schedule.cs" />
     <Compile Include="Models\Tasks.cs" />
+    <Compile Include="Models\Services.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -232,12 +232,12 @@
     <Content Include="Views\Schedule\Edit.cshtml" />
     <Content Include="Views\Schedule\Index.cshtml" />
     <Content Include="Views\Schedule\TaskComplete.cshtml" />
-    <Content Include="Views\Task\Create.cshtml" />
-    <Content Include="Views\Task\Delete.cshtml" />
-    <Content Include="Views\Task\Details.cshtml" />
-    <Content Include="Views\Task\Edit.cshtml" />
-    <Content Include="Views\Task\GenerateSched.cshtml" />
-    <Content Include="Views\Task\Index.cshtml" />
+    <Content Include="Views\Services\Create.cshtml" />
+    <Content Include="Views\Services\Delete.cshtml" />
+    <Content Include="Views\Services\Details.cshtml" />
+    <Content Include="Views\Services\Edit.cshtml" />
+    <Content Include="Views\Services\GenerateSched.cshtml" />
+    <Content Include="Views\Services\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
