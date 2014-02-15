@@ -83,6 +83,37 @@ namespace healthApp.Controllers
             return View(tasks);
         }
 
+        public ActionResult AddServices(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Services tasks = db.Services.Find(id);
+            tasks.RoomNo = "";
+            tasks.Task = "";
+            tasks.duration = 0;
+            tasks.freq = "";
+            tasks.count = 0;
+            tasks.interval = 0;
+            tasks.byDay = "";
+            tasks.byMonthDay = 0;
+
+            return View(tasks);
+        }
+        [HttpPost]
+        public ActionResult AAAAddServices([Bind(Include = "ID,PatientID,RoomNo,Task,duration,dtStart,dtEnd,freq,interval,count,byDay,byMonthDay")] Services tasks)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Services.Add(tasks);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(tasks);
+        }
+        
+
         // GET: /Task/Edit/5
         public ActionResult Edit(int? id)
         {

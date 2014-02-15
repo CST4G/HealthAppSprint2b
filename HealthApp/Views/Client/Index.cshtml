@@ -45,6 +45,9 @@
         <td>
             <b>@Html.ActionLink("Edit", "Edit", new { id = item.ClientID })</b>
         </td>
+        <td>
+            <b>@Html.ActionLink("AddServices", "../Services/AddServices", new { id = item.ClientID })</b>
+        </td>
     </tr>
     <tr>
         <td>
@@ -55,6 +58,9 @@
         </td>
         <td>
             <b>@Html.ActionLink("Details", "Details", new { id = item.ClientID })</b>
+        </td>
+        <td>
+            <b>@Html.ActionLink("GetServices", "GetServices", new { id = item.ClientID })</b>
         </td>
     </tr>
     <tr>

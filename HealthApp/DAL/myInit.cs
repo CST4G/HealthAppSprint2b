@@ -52,6 +52,7 @@ namespace healthApp.DAL {
             var tasks = new List<Services>
             {
                 new Services{ID=1, created=DateTime.Now, PatientID="1", Task="Feed", duration=1, dtStart=yesterday, freq="daily", count=4},
+                new Services{ID=6, created=DateTime.Now, PatientID="1", Task="Wash", duration=1, dtStart=yesterday, freq="weekly", count=3},
                 new Services{ID=2, created=DateTime.Now, PatientID="2", Task="Feed", duration=1, dtStart=yesterday, freq="daily", count=4},
                 new Services{ID=3, created=DateTime.Now, PatientID="3", Task="Feed", duration=1, dtStart=yesterday, freq="daily", count=4},
                 new Services{ID=4, created=DateTime.Now, PatientID="4", Task="Feed", duration=1, dtStart=yesterday, freq="daily", count=4},
