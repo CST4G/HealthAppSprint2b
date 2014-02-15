@@ -85,6 +85,7 @@ namespace healthApp.Controllers
         public ActionResult LogOff()
         {
             this.Session.Clear();
+            FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
 

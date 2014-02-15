@@ -11,16 +11,15 @@ using healthApp.Models;
 
 namespace healthApp.Controllers
 {
-    public class ClientController : Controller
+    public class ClientController : ControllerAuthentication
     {
         private ClientDBContext db = new ClientDBContext();
-        private ServicesDBContext serviceDB = new ServicesDBContext();
 
         // GET: /Clients/
         public ActionResult Index(int? id)
         {
             @ViewBag.Sidebar = "Client";
-            if (hasAccess())
+            if (hasAdminAccess())
             {
                 if (id.HasValue)
                 {
@@ -33,14 +32,8 @@ namespace healthApp.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
-   
-        public bool hasAccess()
-        { 
-            return ((Session["UserProfile"] != null) && (
-            ((UserProfileObj)Session["UserProfile"]).accType == "sysadmin" ||
-            ((UserProfileObj)Session["UserProfile"]).accType ==  "admin"));
 
-        }
+        
          [HttpGet]
         public IEnumerable<Client> Sort(int? id)
         {
@@ -62,7 +55,7 @@ namespace healthApp.Controllers
 
         public ActionResult UploadPicture(int? id)
         {
-            if (hasAccess())
+            if (hasAdminAccess())
             {
                 if (id == null)
                 {
@@ -96,7 +89,7 @@ namespace healthApp.Controllers
 
         public ActionResult Upload(HttpPostedFileBase file, int id)
         {
-            if (hasAccess())
+            if (hasAdminAccess())
             {
                 if (file == null)
                 {
@@ -139,7 +132,7 @@ namespace healthApp.Controllers
         // GET: /Clients/Create
         public ActionResult Create()
         {
-            if (hasAccess())
+            if (hasAdminAccess())
             {
                 return View();
             }
@@ -153,7 +146,7 @@ namespace healthApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ClientID,ClientFirstName,ClientLastName,ClientMarital,ClientDOB,ClientHealthNum,ClientGender,ClientBedNum,ClientFamilyDoc,ClientPicture")] Client client)
         {
-            if (hasAccess())
+            if (hasAdminAccess())
             {
                 if (ModelState.IsValid)
                 {
@@ -170,7 +163,7 @@ namespace healthApp.Controllers
         // GET: /Clients/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (hasAccess())
+            if (hasAdminAccess())
             {
                 if (id == null)
                 {
@@ -193,7 +186,7 @@ namespace healthApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ClientID,ClientFirstName,ClientLastName,ClientMarital,ClientDOB,ClientHealthNum,ClientGender,ClientBedNum,ClientFamilyDoc,ClientPicture")] Client client)
         {
-            if (hasAccess())
+            if (hasAdminAccess())
             {
                 if (ModelState.IsValid)
                 {
@@ -209,7 +202,7 @@ namespace healthApp.Controllers
         // GET: /Clients/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (hasAccess())
+            if (hasAdminAccess())
             {
                 if (id == null)
                 {
@@ -230,7 +223,7 @@ namespace healthApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (hasAccess())
+            if (hasAdminAccess())
             {
                 Client client = db.Client.Find(id);
                 db.Client.Remove(client);
@@ -247,12 +240,6 @@ namespace healthApp.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        public ActionResult GetServices(int id)
-        {
-            var tasks = Services.listServices(serviceDB, id);
-            return View(tasks);
         }
 	}
 }

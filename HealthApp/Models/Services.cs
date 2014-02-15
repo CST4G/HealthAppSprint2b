@@ -28,8 +28,8 @@ namespace healthApp.Models
         public int duration { get; set; } // e.g. e hrs
 
         [Display(Name = "Start Date")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)] //to show a calendar to pick a date
+        //[DataType(DataType.Date)]//to show a calendar to pick a date
+        //[DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)] 
         public DateTime dtStart { get; set; }
 
         [Display(Name = "Until")]
@@ -43,6 +43,7 @@ namespace healthApp.Models
         [ValidFrequency(ErrorMessage = "is not a valid frequency")]
         public string freq { get; set; } //daily, monthly...
         public int? interval { get; set; } // every 2nd/3rd month/day
+        [Display(Name = "Occurances")]
         public int? count { get; set; }  //how many times, instead of end date
         public string byDay { get; set; }  //day of weeek for weekly freq
         public int? byMonthDay { get; set; } //day of month for monthly freq
@@ -89,14 +90,6 @@ namespace healthApp.Models
                                      && s.byMonthDay == dom && DbFunctions.DiffMonths(date, s.dtStart) % s.interval == 0)
                         select s;
             return tasks;
-        }
-
-        public static List<Services> listServices(ServicesDBContext db, int id)
-        {
-            String query = "select * from Services where PatientID = " + id.ToString();
-                        
-            var sqlResults = db.Services.SqlQuery(query);
-            return  sqlResults.ToList();
         }
     }
 
