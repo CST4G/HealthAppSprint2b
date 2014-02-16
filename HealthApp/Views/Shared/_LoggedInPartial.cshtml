@@ -1,2 +1,15 @@
 ﻿
 @Html.ActionLink("Log off", "LogOff", "Login", routeValues: null, htmlAttributes: new { id = "loginLink" })
+<span> | </span>
+@Html.ActionLink("Clients", "../Client", routeValues: null)
+<span> | </span>
+@Html.ActionLink("Services", "../Services", routeValues: null)
+<span> | </span>
+@Html.ActionLink("Tasks", "../Tasks", routeValues: null)
+<span> | </span>
+@{
+    if (User.Identity.Name.ToString() == "sysadmin")
+    {
+        Html.ActionLink("Accounts", "../Login", routeValues: null);
+    }
+}

@@ -23,7 +23,7 @@
                 <a class="navbar-brand" href="#">Health App</a>
                 <br />
                 @{
-                    if (Session["UserProfile"] == null)
+                    if (!Request.IsAuthenticated)
                     {
                         @Html.Partial("_NotLoggedInPartial");
                     }
