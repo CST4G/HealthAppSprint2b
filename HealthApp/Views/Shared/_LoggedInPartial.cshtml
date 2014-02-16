@@ -1,15 +1,15 @@
 ﻿
-@Html.ActionLink("Log off", "LogOff", "Login", routeValues: null, htmlAttributes: new { id = "loginLink" })
-<span> | </span>
-@Html.ActionLink("Clients", "../Client", routeValues: null)
-<span> | </span>
-@Html.ActionLink("Services", "../Services", routeValues: null)
-<span> | </span>
-@Html.ActionLink("Tasks", "../Tasks", routeValues: null)
-<span> | </span>
+@Html.ActionLink("Log off", "LogOff", "Login", routeValues: null, htmlAttributes: new { id = "loginLink" , @class="btn btn-default"})
+
+@Html.ActionLink("Clients", "../Client", routeValues: null, htmlAttributes: new { @class="btn btn-default"})
+
+@Html.ActionLink("Services", "../Services", routeValues: null, htmlAttributes: new { @class = "btn btn-default" })
+
+@Html.ActionLink("Tasks", "../Tasks", routeValues: null, htmlAttributes: new { @class = "btn btn-default" })
+
 @{
     if (User.Identity.Name.ToString() == "sysadmin")
     {
-        Html.ActionLink("Accounts", "../Login", routeValues: null);
+        Html.ActionLink("Accounts", "../Login", routeValues: null, htmlAttributes: new { @class = "btn btn-default" });
     }
 }
