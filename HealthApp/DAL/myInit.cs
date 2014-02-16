@@ -9,7 +9,7 @@ using DevOne.Security.Cryptography.BCrypt;
 namespace healthApp.DAL {
     public class AccountInit : CreateDatabaseIfNotExists<AccountsDBContext> {
         protected override void Seed( AccountsDBContext context ) {
-            string[] mypassword = { "sysadmin", "admin", "123322" };
+            string[] mypassword = { "sysadmin", "bob", "123322" };
             string[] salts = { BCryptHelper.GenerateSalt(), BCryptHelper.GenerateSalt(), BCryptHelper.GenerateSalt() };
             string[] hash = new String[3];
             for ( int i = 0; i < 3; ++i ) {
@@ -17,8 +17,9 @@ namespace healthApp.DAL {
             }
 
             var users = new List<Accounts>
-            {
-                new Accounts{ID=1,Username="sysadmin",encryptedPassword=hash[0], salt=salts[0], fName="system",lName="admin", acctType="sysadmin"},
+            {  
+                new Accounts{ID=1,Username="Monkey",encryptedPassword=hash[0], salt=salts[0], fName="system",lName="admin", acctType="sysadmin"},
+               new Accounts{ID=2,Username="bob ",encryptedPassword=hash[1], salt=salts[1], fName="bob",lName="bob", acctType="user"},
             };
 
             users.ForEach( s => context.Accounts.Add( s ) );
