@@ -59,7 +59,9 @@ namespace healthApp.Controllers
                 var profileData = new UserProfileObj(model.UserName, accType);
 
                 Session["UserProfile"] = profileData;
-                FormsAuthentication.SetAuthCookie(model.UserName, true);
+                FormsAuthentication.SetAuthCookie(accType, true);
+                
+                
 
              
                 return RedirectToAction("Index", "Home");
