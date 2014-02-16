@@ -39,7 +39,7 @@
         <div class="row row-offcanvas row-offcanvas-left">
 
             <!-- collapsable sidebar -->
-            <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6 sidebar-offcanvas" id="sidebar" role="navigation">
+            <div class="col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
                 @{
                     if (String.Equals(ViewBag.Sidebar, "Client", StringComparison.Ordinal))
                     {
@@ -50,7 +50,7 @@
                 }
             </div>
             <!-- end collapsable sidebar -->
-            <div class="container body-content col-lg-6 col-md-6 col-xs-6 col-sm-6">
+            <div class="container body-content col-md-10">
                 @RenderBody()
             </div>
         </div>
