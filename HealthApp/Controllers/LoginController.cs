@@ -60,7 +60,7 @@ namespace healthApp.Controllers
 
                 Session["UserProfile"] = profileData;
                 FormsAuthentication.SetAuthCookie(accType, true);
-                Session["role"] = model.UserName;
+                
                 
 
              

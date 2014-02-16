@@ -16,8 +16,8 @@ namespace healthApp.Controllers
         {
             if(hasUserAccess())
             { 
-            return View(db.Services.ToList());
-        }
+                return View(db.Services.ToList());
+            }
             return RedirectToAction("Index", "Home");
         }
 
@@ -110,13 +110,15 @@ namespace healthApp.Controllers
         }
             return RedirectToAction("Index");
         }
-        public ActionResult AddServices(int? id)
+        public ActionResult AddServices(int? id, int? roomNo)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Services tasks = db.Services.Find(id);
+            Services tasks = new Services();
+            tasks.PatientID = id.ToString();
             tasks.RoomNo = "";
             tasks.Task = "";
             tasks.duration = 0;
@@ -125,6 +127,9 @@ namespace healthApp.Controllers
             tasks.interval = 0;
             tasks.byDay = "";
             tasks.byMonthDay = 0;
+            tasks.dtStart = DateTime.Today;
+            tasks.dtEnd = null;
+           
 
             return View(tasks);
         }

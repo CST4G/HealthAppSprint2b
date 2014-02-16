@@ -20,7 +20,7 @@ namespace healthApp.Controllers
             String userID =(String) Session["role"];
             DateTime shiftStart = DateTime.Today;
             DateTime shiftEnd = DateTime.Today;
-            if (userID.Equals("morning"))
+            if (userID == "morning")
             {
                 shiftStart = DateTime.Today;
                 shiftEnd = DateTime.Today.AddHours(12);

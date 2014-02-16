@@ -16,10 +16,10 @@
         @Html.ValidationSummary(true)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PatientID, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ID, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.PatientID, new { disabled= "disabled",@readonly = "readonly" })
-                @Html.HiddenFor(model => model.PatientID)
+               <!-- @Html.TextBoxFor(model => model.ID, new { disabled= "disabled",@readonly = "readonly" })-->
+                @Html.EditorFor(model => model.PatientID)
                 @Html.ValidationMessageFor(model => model.PatientID)
             </div>
         </div>
