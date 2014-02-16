@@ -17,7 +17,7 @@ namespace healthApp.Controllers
         // GET: /Schedule/
         public ActionResult Index()
         {
-            String userID = "morning";
+            String userID =(String) Session["role"];
             DateTime shiftStart = DateTime.Today;
             DateTime shiftEnd = DateTime.Today;
             if (userID.Equals("morning"))

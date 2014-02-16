@@ -6,6 +6,7 @@ namespace healthApp.Controllers
     public class ControllerAuthentication : Controller
     {
         
+        
         public bool hasAdminAccess()
         {
             return Request.IsAuthenticated && (User.Identity.Name.ToString() == "sysadmin");

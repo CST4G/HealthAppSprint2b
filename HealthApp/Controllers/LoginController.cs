@@ -13,7 +13,7 @@ using System.Web.Security;
 
 namespace healthApp.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : ControllerAuthentication
     {
         AccountsDBContext db = new AccountsDBContext();
 
@@ -60,7 +60,7 @@ namespace healthApp.Controllers
 
                 Session["UserProfile"] = profileData;
                 FormsAuthentication.SetAuthCookie(accType, true);
-                
+                Session["role"] = model.UserName;
                 
 
              
