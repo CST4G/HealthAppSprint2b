@@ -17,8 +17,8 @@ namespace healthApp.DAL {
             }
 
             var users = new List<Accounts>
-            {
-                new Accounts{ID=1,Username="sysadmin",encryptedPassword=hash[0], salt=salts[0], fName="system",lName="admin", acctType="sysadmin"},
+            {  
+                new Accounts{ID=1,Username="Monkey",encryptedPassword=hash[0], salt=salts[0], fName="system",lName="admin", acctType="sysadmin"},
                new Accounts{ID=2,Username="bob ",encryptedPassword=hash[1], salt=salts[1], fName="bob",lName="bob", acctType="user"},
             };
 
