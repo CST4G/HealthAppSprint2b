@@ -1,15 +1,28 @@
-﻿
-@Html.ActionLink("Log off", "LogOff", "Login", routeValues: null, htmlAttributes: new { id = "loginLink" , @class="btn btn-default"})
+﻿<ul class="nav navbar-nav pull-left" > 
+   
+    <li>
+    @Html.ActionLink("Clients", "../Client", routeValues: null, htmlAttributes: new { })
+    </li>
+    <li>
+        @Html.ActionLink("Services", "../Services", routeValues: null, htmlAttributes: new { })
+    </li>
+    <li>
+        @Html.ActionLink("Tasks", "../Tasks", routeValues: null, htmlAttributes: new { })
+    </li>
 
-@Html.ActionLink("Clients", "../Client", routeValues: null, htmlAttributes: new { @class="btn btn-default"})
-
-@Html.ActionLink("Services", "../Services", routeValues: null, htmlAttributes: new { @class = "btn btn-default" })
-
-@Html.ActionLink("Tasks", "../Tasks", routeValues: null, htmlAttributes: new { @class = "btn btn-default" })
-
-@{
-    if (User.Identity.Name.ToString() == "sysadmin")
-    {
-        Html.ActionLink("Accounts", "../Login", routeValues: null, htmlAttributes: new { @class = "btn btn-default" });
-    }
-}
+    <li>
+        @{
+            string[] role = User.Identity.Name.ToString().Split('&');
+            if (role[1] == "sysadmin")
+            {
+                @Html.ActionLink("Accounts", "../Login/Index", routeValues: null, htmlAttributes: new { });
+            }
+        }
+    </li>
+   
+</ul>
+<ul class="nav navbar-nav pull-right">
+    <li >
+    @Html.ActionLink("Log off", "LogOff", "Login", routeValues: null, htmlAttributes: new { id = "loginLink" })
+    </li>
+</ul>

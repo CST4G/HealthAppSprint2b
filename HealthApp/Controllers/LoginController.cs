@@ -17,22 +17,17 @@ namespace healthApp.Controllers
     {
         AccountsDBContext db = new AccountsDBContext();
 
-        public bool hasAccess()
-        {
-            return ((Session["UserProfile"] != null) &&
-            ((UserProfileObj)Session["UserProfile"]).accType == "sysadmin");
-          
-        }
+      
         // Index if system admin gives access to all users otherwise redirecto to Login
         // GET: /Login/
         public ActionResult Index()
         { 
-            if (hasAccess())
+            if (hasAdminAccess())
             {
                 return View(db.Accounts.ToList());
             }else
             {
-                return RedirectToAction("Login","Login");
+                return RedirectToAction("Index","Home");
             }
         }
 
@@ -57,9 +52,9 @@ namespace healthApp.Controllers
               
 
                 var profileData = new UserProfileObj(model.UserName, accType);
-
+                string delimited = model.UserName + "&" + accType;
                 Session["UserProfile"] = profileData;
-                FormsAuthentication.SetAuthCookie(accType, true);
+                FormsAuthentication.SetAuthCookie(delimited, true);
                 Session["role"] = model.UserName;
                 
 
@@ -98,7 +93,7 @@ namespace healthApp.Controllers
         // GET: /Login/Details/5
         public ActionResult Details(int? id)
         {
-            if (hasAccess())
+            if (hasAdminAccess())
             {
                 if (id == null)
                 {
@@ -123,7 +118,7 @@ namespace healthApp.Controllers
         // GET: /Login/Create
         public ActionResult Create()
         {
-           if(hasAccess()){
+           if(hasAdminAccess()){
                return View();
             }else{
                 return RedirectToAction("Index", "Home");
@@ -140,7 +135,7 @@ namespace healthApp.Controllers
         {
             Accounts accounts = Accounts.createFromCredential(credential);
 
-            if (hasAccess())
+            if (hasAdminAccess())
             {
                 if (ModelState.IsValid)
                 {
@@ -162,7 +157,7 @@ namespace healthApp.Controllers
         // GET: /Login/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (hasAccess())
+            if (hasAdminAccess())
             {
                 if (id == null)
                 {
@@ -191,7 +186,7 @@ namespace healthApp.Controllers
         public ActionResult Edit([Bind(Include = "ID,UserName,Password,fName,lName,acctType")] Credentials credential)
         {
             Accounts accounts = Accounts.createFromCredential(credential);
-            if (hasAccess())
+            if (hasAdminAccess())
             {
                 if (ModelState.IsValid)
                 {
@@ -211,7 +206,7 @@ namespace healthApp.Controllers
         public ActionResult Delete(int? id)
         {
 
-            if (hasAccess())
+            if (hasAdminAccess())
             {
                 if (id == null)
                 {
@@ -237,7 +232,7 @@ namespace healthApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (hasAccess())
+            if (hasAdminAccess())
             {
                 Accounts accounts = db.Accounts.Find(id);
                 db.Accounts.Remove(accounts);

@@ -14,7 +14,7 @@ namespace healthApp.Controllers
     public class ClientController : ControllerAuthentication
     {
         private ClientDBContext db = new ClientDBContext();
-        private ServicesDBContext serviceDB = new ServicesDBContext();
+     
 
         // GET: /Clients/
         public ActionResult Index(int? id)
@@ -81,7 +81,8 @@ namespace healthApp.Controllers
             Client client = db.Client.SingleOrDefault(profile => profile.ClientID == id);
             if (client.ClientPicture == null)
             {
-                return null;
+                x = File("/App_Data/Images/placeholder.jpg", "image/jpg");
+                return x;
             }
             byte[] buffer = client.ClientPicture;
             x = File(buffer, "image/jpg", string.Format("{0}", id));
@@ -243,10 +244,22 @@ namespace healthApp.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult GetServices(int id)
+        public ActionResult GetServices(int? id)
         {
-             var tasks = Services.listServices(serviceDB, id);
-            return View(tasks);
+            if (hasUserAccess())
+            {
+                if (id.HasValue)
+                {
+                    ServicesDBContext serviceDB = new ServicesDBContext();
+                    var tasks = Services.listServices(serviceDB, id);
+                    return View(tasks);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Client");
+                }
+            }
+            return RedirectToAction("Index", "Home");
          }
 	}
 }

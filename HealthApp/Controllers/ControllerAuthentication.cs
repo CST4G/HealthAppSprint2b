@@ -9,13 +9,15 @@ namespace healthApp.Controllers
         
         public bool hasAdminAccess()
         {
-            return Request.IsAuthenticated && (User.Identity.Name.ToString() == "sysadmin");
+            string[] role = User.Identity.Name.ToString().Split('&');
+            return Request.IsAuthenticated && (role[1] == "sysadmin");
         }
 
         public bool hasUserAccess()
         {
+            string[] role = User.Identity.Name.ToString().Split('&');
             //note: name in this case is actually the role of the user not the name
-            return Request.IsAuthenticated && (hasAdminAccess() || (User.Identity.Name.ToString() == "user"));
+            return Request.IsAuthenticated && (hasAdminAccess() || (role[1] == "user"));
         }
     }
 }

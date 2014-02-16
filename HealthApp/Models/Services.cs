@@ -93,18 +93,20 @@ namespace healthApp.Models
         }
 
 
-        public static List<Services> listServices(ServicesDBContext db, int id)
+        public static List<Services> listServices(ServicesDBContext db, int? id)
         {
+
             String query = "select * from Services where PatientID = " + id.ToString();
 
             var sqlResults = db.Services.SqlQuery(query);
             return sqlResults.ToList();
+
         }
     }
 
     public class ServicesDBContext : DbContext
     {
-        public ServicesDBContext() : base("DefaultConnection") {}
+        public ServicesDBContext() : base("DefaultConnection") { }
         public DbSet<Services> Services { get; set; }
         public DbSet<Tasks> Tasks { get; set; }
     }
