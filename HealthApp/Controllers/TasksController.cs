@@ -17,7 +17,23 @@ namespace healthApp.Controllers
         // GET: /Schedule/
         public ActionResult Index()
         {
-            return View(db.Tasks.ToList());
+            String userID = "morning";
+            DateTime shiftStart = DateTime.Today;
+            DateTime shiftEnd = DateTime.Today;
+            if (userID.Equals("morning"))
+            {
+                shiftStart = DateTime.Today;
+                shiftEnd = DateTime.Today.AddHours(12);
+            }
+            else if (userID.Equals("evening"))
+            {
+                shiftStart = DateTime.Today.AddHours(12);
+                shiftEnd = DateTime.Today.AddHours(24);
+            }
+            var tasks = from s in db.Tasks
+                        where (s.tDate >= shiftStart && s.tDate <= shiftEnd)
+                        select s;
+            return View(tasks);
         }
 
         //open TaskComplete view to add comments and actual time
@@ -71,7 +87,7 @@ namespace healthApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ID,taskID,PatientID,RoomNo,Task,tDate,duration,actual,comments")] Tasks schedule)
+        public ActionResult Create([Bind(Include = "ID,taskID,PatientID,RoomNo,Task,tDate,duration,actual,comments")] Tasks schedule)
         {
             if (ModelState.IsValid)
             {
@@ -103,7 +119,7 @@ namespace healthApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ID,taskID,PatientID,RoomNo,Task,tDate,duration,actual,comments")] Tasks schedule)
+        public ActionResult Edit([Bind(Include = "ID,taskID,PatientID,RoomNo,Task,tDate,duration,actual,comments")] Tasks schedule)
         {
             if (ModelState.IsValid)
             {

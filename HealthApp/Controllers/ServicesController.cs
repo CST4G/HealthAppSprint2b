@@ -29,7 +29,7 @@ namespace healthApp.Controllers
 
             Tasks sc = new Tasks();
             //populate schedule with new records
-            foreach (var item in tasks)
+            foreach (var item in tasks.ToList())
             {
                 sc.taskID = item.ID;
                 sc.PatientID = item.PatientID;
@@ -38,13 +38,10 @@ namespace healthApp.Controllers
                 sc.duration = item.duration;
                 sc.tDate = DateTime.Today + item.dtStart.TimeOfDay;
                 db.Tasks.Add(sc);
+                db.SaveChanges();
             }
-
-            db.SaveChanges();
             return View(db.Tasks.ToList());
         }
-
-        
 
         // GET: /Task/Details/5
         public ActionResult Details(int? id)
