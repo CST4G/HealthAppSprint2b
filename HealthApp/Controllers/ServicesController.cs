@@ -25,8 +25,8 @@ namespace healthApp.Controllers
         //populate today's Shedule based on Tasks
         public ActionResult GenerateSched()
         {
-            if(hasAdminAccess())
-            { 
+            if (hasAdminAccess())
+            {
                 DateTime date = DateTime.Today; //date will be set to today
                 String[] days = { "Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat" };
                 String dow = days[(int)date.DayOfWeek]; //day of week
@@ -51,7 +51,9 @@ namespace healthApp.Controllers
                 return View(db.Tasks.ToList());
             }
             else
+            {
                 return RedirectToAction("Index");
+            }
         }
 
         
@@ -60,7 +62,7 @@ namespace healthApp.Controllers
         public ActionResult Details(int? id)
         {
             if (hasUserAccess())
-            { 
+            {
                 if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -73,7 +75,9 @@ namespace healthApp.Controllers
                 return View(tasks);
             }
             else
+            {
                 return RedirectToAction("Index");
+            }
             
         }
 
@@ -81,9 +85,13 @@ namespace healthApp.Controllers
         public ActionResult Create()
         {
             if (hasAdminAccess())
+            {
                 return View();
+            }
             else
+            {
                 return RedirectToAction("Index");
+            }
         }
 
         // POST: /Task/Create
@@ -103,7 +111,14 @@ namespace healthApp.Controllers
 
                 return View(tasks);
             }
-<<<<<<< HEAD
+            return RedirectToAction("Index");
+        }
+        public ActionResult AddServices(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             Services tasks = db.Services.Find(id);
             tasks.RoomNo = "";
             tasks.Task = "";
@@ -123,10 +138,10 @@ namespace healthApp.Controllers
             {
                 db.Services.Add(tasks);
                 db.SaveChanges();
-=======
-            else
->>>>>>> 8302b679a0e536f3121f1050e267b6fcb9aeaf37
+
                 return RedirectToAction("Index");
+            }
+                 return View(tasks);
         }
 
         // GET: /Task/Edit/5
