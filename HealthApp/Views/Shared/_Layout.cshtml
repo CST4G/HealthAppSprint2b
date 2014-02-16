@@ -21,18 +21,19 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#">Health App</a>
-                <br />
-                @{
-                    if (!Request.IsAuthenticated)
-                    {
-                        @Html.Partial("_NotLoggedInPartial");
-                    }
-                    else
-                    {
-                        @Html.Partial("_LoggedInPartial");
-                    }
-                }
             </div>
+            <div class="navbar-collapse">
+            @{
+                if (!Request.IsAuthenticated)
+                {
+                    @Html.Partial("_NotLoggedInPartial");
+                }
+                else
+                {
+                    @Html.Partial("_LoggedInPartial");
+                }
+            }
+            </div> 
         </div>
     </div>
     <div class="container">
@@ -40,6 +41,7 @@
 
             <!-- collapsable sidebar -->
             <div class="col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+                
                 @{
                     if (String.Equals(ViewBag.Sidebar, "Client", StringComparison.Ordinal))
                     {
