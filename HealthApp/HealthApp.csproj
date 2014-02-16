@@ -29,6 +29,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -239,7 +240,10 @@
     <Content Include="Views\Services\Edit.cshtml" />
     <Content Include="Views\Services\GenerateSched.cshtml" />
     <Content Include="Views\Services\Index.cshtml" />
-    <Content Include="Views\Shared\_LoggedInPartialMenu.cshtml" />
+    <Content Include="Views\Client\GetServices.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Services\AddServices.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

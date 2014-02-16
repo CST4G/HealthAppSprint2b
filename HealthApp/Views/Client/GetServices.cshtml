@@ -1,0 +1,103 @@
+﻿@model IEnumerable<healthApp.Models.Services>
+@{
+    ViewBag.Title = "GetServices";
+}
+
+<h2>GetServices</h2>
+
+    <h4>Tasks</h4>
+@foreach (var item in Model)
+{
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PatientID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => item.PatientID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => item.RoomNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Task)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => item.Task)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.duration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => item.duration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => item.dtStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => item.dtEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.freq)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => item.freq)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.interval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => item.interval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.count)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => item.count)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.byDay)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => item.byDay)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.byMonthDay)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => item.byMonthDay)
+        </dd>
+
+    </dl>
+<p>
+    @Html.ActionLink("Edit", "../Services/Edit", new { id = item.ID }) 
+</p>
+}
+<hr/>
+@Html.ActionLink("Back to List", "Index")

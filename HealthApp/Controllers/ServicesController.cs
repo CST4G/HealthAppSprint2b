@@ -16,8 +16,8 @@ namespace healthApp.Controllers
         {
             if(hasUserAccess())
             { 
-                return View(db.Services.ToList());
-            }
+            return View(db.Services.ToList());
+        }
             return RedirectToAction("Index", "Home");
         }
 
@@ -27,59 +27,55 @@ namespace healthApp.Controllers
         {
             if (hasAdminAccess())
             {
-                DateTime date = DateTime.Today; //date will be set to today
-                String[] days = { "Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat" };
-                String dow = days[(int)date.DayOfWeek]; //day of week
-                int dom = date.Day;
-                //call static method from tasks model to get all the tasks needed to generate schedule. 
-                var tasks = Services.getTasks(db, date, dow, dom);
+            DateTime date = DateTime.Today; //date will be set to today
+            String[] days = { "Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat" };
+            String dow = days[(int)date.DayOfWeek]; //day of week
+            int dom = date.Day;
+            //call static method from tasks model to get all the tasks needed to generate schedule. 
+            var tasks = Services.getTasks(db, date, dow, dom);
 
-                Tasks sc = new Tasks();
-                //populate schedule with new records
-                foreach (var item in tasks.ToList())
-                {
-                    sc.taskID = item.ID;
-                    sc.PatientID = item.PatientID;
-                    sc.Task = item.Task;
-                    sc.RoomNo = item.RoomNo;
-                    sc.duration = item.duration;
-                    sc.tDate = DateTime.Today + item.dtStart.TimeOfDay;
-                    db.Tasks.Add(sc);
-                    db.SaveChanges();
-                }
-
-                
-                return View(db.Tasks.ToList());
+            Tasks sc = new Tasks();
+            //populate schedule with new records
+            foreach (var item in tasks.ToList())
+            {
+                sc.taskID = item.ID;
+                sc.PatientID = item.PatientID;
+                sc.Task = item.Task;
+                sc.RoomNo = item.RoomNo;
+                sc.duration = item.duration;
+                sc.tDate = DateTime.Today + item.dtStart.TimeOfDay;
+                db.Tasks.Add(sc);
+                db.SaveChanges();
             }
+            return View(db.Tasks.ToList());
+        }
             else
             {
                 return RedirectToAction("Index");
             }
         }
 
-        
-
         // GET: /Task/Details/5
         public ActionResult Details(int? id)
         {
             if (hasUserAccess())
             {
-                if (id == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-                Services tasks = db.Services.Find(id);
-                if (tasks == null)
-                {
-                    return HttpNotFound();
-                }
-                return View(tasks);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            Services tasks = db.Services.Find(id);
+            if (tasks == null)
+            {
+                return HttpNotFound();
+            }
+            return View(tasks);
+        }
             else
             {
                 return RedirectToAction("Index");
             }
-            
+
         }
 
         // GET: /Task/Create
@@ -87,8 +83,8 @@ namespace healthApp.Controllers
         {
             if (hasAdminAccess())
             {
-                return View();
-            }
+            return View();
+        }
             else
             {
                 return RedirectToAction("Index");
@@ -103,15 +99,15 @@ namespace healthApp.Controllers
         {
             if (hasAdminAccess())
             {
-                if (ModelState.IsValid)
-                {
-                    db.Services.Add(tasks);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-
-                return View(tasks);
+            if (ModelState.IsValid)
+            {
+                db.Services.Add(tasks);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
+
+            return View(tasks);
+        }
             return RedirectToAction("Index");
         }
         public ActionResult AddServices(int? id)
@@ -150,17 +146,17 @@ namespace healthApp.Controllers
         {
             if(hasAdminAccess())
             {
-                if (id == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-                Services tasks = db.Services.Find(id);
-                if (tasks == null)
-                {
-                    return HttpNotFound();
-                }
-                return View(tasks);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            Services tasks = db.Services.Find(id);
+            if (tasks == null)
+            {
+                return HttpNotFound();
+            }
+            return View(tasks);
+        }
             else
                 return RedirectToAction("Index");
         }
@@ -173,14 +169,14 @@ namespace healthApp.Controllers
         {
             if(hasAdminAccess())
             { 
-                if (ModelState.IsValid)
-                {
-                    db.Entry(tasks).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                return View(tasks);
+            if (ModelState.IsValid)
+            {
+                db.Entry(tasks).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
+            return View(tasks);
+        }
             else
                 return RedirectToAction("Index");
         }
@@ -190,17 +186,17 @@ namespace healthApp.Controllers
         {
             if(hasAdminAccess())
             { 
-                if (id == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-                Services tasks = db.Services.Find(id);
-                if (tasks == null)
-                {
-                    return HttpNotFound();
-                }
-                return View(tasks);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            Services tasks = db.Services.Find(id);
+            if (tasks == null)
+            {
+                return HttpNotFound();
+            }
+            return View(tasks);
+        }
             else
                 return RedirectToAction("Index");
         }
