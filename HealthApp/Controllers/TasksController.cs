@@ -55,6 +55,7 @@ namespace healthApp.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 db.Entry(t).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
