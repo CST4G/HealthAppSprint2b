@@ -31,6 +31,11 @@ namespace healthApp.Controllers
                 shiftStart = DateTime.Today.AddHours(12);
                 shiftEnd = DateTime.Today.AddHours(24);
             }
+            else if (userID.Equals("Monkey"))
+            {
+                shiftStart = DateTime.Today;
+                shiftEnd = DateTime.Today.AddDays(1);
+            }
             var tasks = from s in db.Tasks
                         where (s.tDate >= shiftStart && s.tDate <= shiftEnd)
                         select s;

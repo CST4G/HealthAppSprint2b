@@ -13,9 +13,11 @@
     <li>
         @{
             string[] role = User.Identity.Name.ToString().Split('&');
-            if (role[1] == "sysadmin")
-            {
-                @Html.ActionLink("Accounts", "../Login/Index", routeValues: null, htmlAttributes: new { });
+            if (role != null) { 
+                if (role[1] == "sysadmin")
+                {
+                    @Html.ActionLink("Accounts", "../Login/Index", routeValues: null, htmlAttributes: new { });
+                }
             }
         }
     </li>
