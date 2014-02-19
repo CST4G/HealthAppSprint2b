@@ -19,6 +19,9 @@
 
             <dd>
                 @Html.DisplayFor(model => item.PatientID)
+                @{
+                    ViewBag.PatientID = (item.PatientID);
+                 }
             </dd>
 
             <dt>
@@ -103,6 +106,7 @@
         </p>
     }
     <hr />
-    @Html.ActionLink("Back to Clients", "Index")
+    @Html.ActionLink("Back to Clients List", "Index") |
+    @Html.ActionLink("Back to Client", "../Client/Details/", new  { id = ViewBag.PatientID })
 </div>
 <div class="col-lg-2"></div>

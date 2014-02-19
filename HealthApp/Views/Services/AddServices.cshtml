@@ -102,12 +102,16 @@
             </div>
         </div>
     </div>
-}
+
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
+    <div>
+    @Html.ActionLink("Back to Client", "../Client/Details/", new { id = Model.PatientID })
+    
+</div>
+}
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

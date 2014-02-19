@@ -14,8 +14,8 @@ namespace healthApp.Controllers
         // GET: /Task/
         public ActionResult Index()
         {
-            if(hasUserAccess())
-            { 
+            if (hasUserAccess())
+            {
                 return View(db.Services.ToList());
             }
             return RedirectToAction("Index", "Home");
@@ -27,28 +27,28 @@ namespace healthApp.Controllers
         {
             if (hasAdminAccess())
             {
-            DateTime date = DateTime.Today; //date will be set to today
-            String[] days = { "Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat" };
-            String dow = days[(int)date.DayOfWeek]; //day of week
-            int dom = date.Day;
-            //call static method from tasks model to get all the tasks needed to generate schedule. 
-            var tasks = Services.getTasks(db, date, dow, dom);
+                DateTime date = DateTime.Today; //date will be set to today
+                String[] days = { "Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat" };
+                String dow = days[(int)date.DayOfWeek]; //day of week
+                int dom = date.Day;
+                //call static method from tasks model to get all the tasks needed to generate schedule. 
+                var tasks = Services.getTasks(db, date, dow, dom);
 
-            Tasks sc = new Tasks();
-            //populate schedule with new records
-            foreach (var item in tasks.ToList())
-            {
-                sc.taskID = item.ID;
-                sc.PatientID = item.PatientID;
-                sc.Task = item.Task;
-                sc.RoomNo = item.RoomNo;
-                sc.duration = item.duration;
-                sc.tDate = DateTime.Today + item.dtStart.TimeOfDay;
-                db.Tasks.Add(sc);
-                db.SaveChanges();
+                Tasks sc = new Tasks();
+                //populate schedule with new records
+                foreach (var item in tasks.ToList())
+                {
+                    sc.taskID = item.ID;
+                    sc.PatientID = item.PatientID;
+                    sc.Task = item.Task;
+                    sc.RoomNo = item.RoomNo;
+                    sc.duration = item.duration;
+                    sc.tDate = DateTime.Today + item.dtStart.TimeOfDay;
+                    db.Tasks.Add(sc);
+                    db.SaveChanges();
+                }
+                return View(db.Tasks.ToList());
             }
-            return View(db.Tasks.ToList());
-        }
             else
             {
                 return RedirectToAction("Index");
@@ -60,17 +60,17 @@ namespace healthApp.Controllers
         {
             if (hasUserAccess())
             {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Services tasks = db.Services.Find(id);
+                if (tasks == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(tasks);
             }
-            Services tasks = db.Services.Find(id);
-            if (tasks == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tasks);
-        }
             else
             {
                 return RedirectToAction("Index");
@@ -83,8 +83,8 @@ namespace healthApp.Controllers
         {
             if (hasAdminAccess())
             {
-            return View();
-        }
+                return View();
+            }
             else
             {
                 return RedirectToAction("Index");
@@ -99,20 +99,20 @@ namespace healthApp.Controllers
         {
             if (hasAdminAccess())
             {
-            if (ModelState.IsValid)
-            {
-                db.Services.Add(tasks);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    db.Services.Add(tasks);
+                    db.SaveChanges();
+                    return RedirectToAction("Details", "Client", tasks.PatientID);
+                }
 
-            return View(tasks);
-        }
+                return RedirectToAction( "Details", "Client", tasks.PatientID);
+            }
             return RedirectToAction("Index");
         }
         public ActionResult AddServices(int? id, int? roomNo)
         {
-            
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -129,7 +129,7 @@ namespace healthApp.Controllers
             tasks.byMonthDay = 0;
             tasks.dtStart = DateTime.Today;
             tasks.dtEnd = null;
-           
+
 
             return View(tasks);
         }
@@ -140,28 +140,27 @@ namespace healthApp.Controllers
             {
                 db.Services.Add(tasks);
                 db.SaveChanges();
-
-                return RedirectToAction("Index");
+                return RedirectToAction("", "Client/GetServices/" + tasks.PatientID );
             }
-                 return View(tasks);
+            return View(tasks);
         }
 
         // GET: /Task/Edit/5
         public ActionResult Edit(int? id)
         {
-            if(hasAdminAccess())
+            if (hasAdminAccess())
             {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Services tasks = db.Services.Find(id);
+                if (tasks == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(tasks);
             }
-            Services tasks = db.Services.Find(id);
-            if (tasks == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tasks);
-        }
             else
                 return RedirectToAction("Index");
         }
@@ -172,16 +171,16 @@ namespace healthApp.Controllers
         [HttpPost]
         public ActionResult Edit([Bind(Include = "ID,PatientID,RoomNo,Task,duration,dtStart,dtEnd,freq,interval,count,byDay,byMonthDay")] Services tasks)
         {
-            if(hasAdminAccess())
-            { 
-            if (ModelState.IsValid)
+            if (hasAdminAccess())
             {
-                db.Entry(tasks).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(tasks).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(tasks);
             }
-            return View(tasks);
-        }
             else
                 return RedirectToAction("Index");
         }
@@ -189,19 +188,19 @@ namespace healthApp.Controllers
         // GET: /Task/Delete/5
         public ActionResult Delete(int? id)
         {
-            if(hasAdminAccess())
-            { 
-            if (id == null)
+            if (hasAdminAccess())
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Services tasks = db.Services.Find(id);
+                if (tasks == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(tasks);
             }
-            Services tasks = db.Services.Find(id);
-            if (tasks == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tasks);
-        }
             else
                 return RedirectToAction("Index");
         }
