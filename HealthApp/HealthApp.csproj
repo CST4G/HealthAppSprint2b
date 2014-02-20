@@ -247,6 +247,7 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\Services\AddServices.cshtml" />
+    <Content Include="Views\Tasks\PrintTasks.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
