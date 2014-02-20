@@ -10,41 +10,43 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.PatientID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RoomNo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Task)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.duration)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dtStart)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dtEnd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.freq)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.interval)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.count)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.byDay)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.byMonthDay)
-        </th>
-        <th></th>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Task)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dtStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dtEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.freq)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.interval)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.count)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.byDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.byMonthDay)
+            </th>
+            <th></th>
+    </thead>
     </tr>
 
 @foreach (var item in Model) {
@@ -83,9 +85,9 @@
             @Html.DisplayFor(modelItem => item.byMonthDay)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-default", style="width:7em" }) <br/>
+            @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-default ", style = "width:7em" }) <br /><br/>
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger ", style = "width:7em" }) <br />
         </td>
     </tr>
 }

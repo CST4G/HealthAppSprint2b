@@ -20,6 +20,22 @@ namespace healthApp.Models
 
        // [Required]
        // [DisplayName( "Account Type" )]
-        public string acctType { get; set; } 
+        public string acctType { get; set; }
+
+        public static Credentials createFromAccount(Accounts account)
+        {
+            Credentials cred = new Credentials();
+            cred.acctType = account.acctType;
+            cred.fName = account.fName;
+            cred.lName = account.lName;
+            cred.UserName = account.Username;
+            cred.ID = account.ID;
+
+            cred.Password = "";
+           
+            
+            return cred;
+
+        }
     }
 }

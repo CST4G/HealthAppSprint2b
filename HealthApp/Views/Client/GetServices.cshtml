@@ -5,108 +5,112 @@
 <div class="col-lg-2"></div>
 <div class=" col-lg-8">
 
-    <h2>GetServices</h2>
+    <h2>Services for Client: @Html.DisplayFor(model => model.First().PatientID)</h2>
 
     <h4>Tasks</h4>
     @foreach (var item in Model)
     {
-        <hr />
-
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.PatientID)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => item.PatientID)
-                @{
-                    ViewBag.PatientID = (item.PatientID);
-                 }
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.RoomNo)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => item.RoomNo)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Task)
-            </dt>
-
-            <dd>
+        <table class="table table-striped">
+            <thead style="padding:100px">
+            <th colspan="4">
+                <b>
+                    @Html.DisplayNameFor(model => model.Task) :
+                </b>
                 @Html.DisplayFor(model => item.Task)
-            </dd>
+            </th>
+            </thead>
+            <tr>
+                <td>
+                    <b>@Html.DisplayNameFor(model => model.PatientID)</b>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.PatientID)
+                    @{
+        ViewBag.PatientID = (item.PatientID);
+                    }
+                </td>
+                <td>
+                    <b> @Html.DisplayNameFor(model => model.RoomNo) </b>
+</td>
+                <td>
+                    @Html.DisplayFor(model => item.RoomNo)
+                </td>
+            </tr>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.duration)
-            </dt>
+            <tr>
+                <td>
+                    <b> @Html.DisplayNameFor(model => model.Task) </b>
+</td>
+                <td>
+                    @Html.DisplayFor(model => item.Task)
+                </td>
+                <td>
+                    <b> @Html.DisplayNameFor(model => model.duration) </b>
+</td>
+                <td>
+                    @Html.DisplayFor(model => item.duration)
+                </td>
+            </tr>
 
-            <dd>
-                @Html.DisplayFor(model => item.duration)
-            </dd>
+            <tr>
+                <td>
+                    <b> @Html.DisplayNameFor(model => model.dtStart) </b>
+</td>
+                <td>
+                    @Html.DisplayFor(model => item.dtStart)
+                </td>
+                <td>
+                    <b>@Html.DisplayNameFor(model => model.dtEnd) </b>
+</td>
+                <td>
+                    @Html.DisplayFor(model => item.dtEnd)
+                </td>
+            </tr>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.dtStart)
-            </dt>
+            <tr>
+                <td>
+                    <b> @Html.DisplayNameFor(model => model.freq) </b>
+</td>
+                <td>
+                    @Html.DisplayFor(model => item.freq)
+                </td>
+                <td>
+                    <b> @Html.DisplayNameFor(model => model.interval) </b>
+</td>
+                <td>
+                    @Html.DisplayFor(model => item.interval)
+                </td>
+            </tr>
 
-            <dd>
-                @Html.DisplayFor(model => item.dtStart)
-            </dd>
+            <tr>
+                <td>
+                    <b> @Html.DisplayNameFor(model => model.count) </b>
+</td>
+                <td>
+                    @Html.DisplayFor(model => item.count)
+                </td>
+                <td>
+                    <b> @Html.DisplayNameFor(model => model.byDay) </b>
+</td>
+                <td>
+                    @Html.DisplayFor(model => item.byDay)
+                </td>
+            </tr>
+            <tr>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.dtEnd)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => item.dtEnd)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.freq)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => item.freq)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.interval)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => item.interval)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.count)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => item.count)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.byDay)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => item.byDay)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.byMonthDay)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => item.byMonthDay)
-            </dd>
-
-        </dl>
-        <p>
-            @Html.ActionLink("Edit", "../Services/Edit", new { id = item.ID })
-        </p>
+                <td colspan="2">
+                    <b> @Html.DisplayNameFor(model => model.byMonthDay) </b>
+</td>
+                <td colspan="2">
+                    @Html.DisplayFor(model => item.byMonthDay)
+                    @Html.ActionLink("Edit this Service", "../Services/Edit", new { id = item.ID })
+                </td>
+            </tr>
+            <tr></tr>
+        </table>
     }
-    <hr />
-    @Html.ActionLink("Back to Clients List", "Index") |
-    @Html.ActionLink("Back to Client", "../Client/Details/", new  { id = ViewBag.PatientID })
+
+    @Html.ActionLink("Back to Clients List", "Index", new {id = ""}, new { @class = "btn btn-default"}) 
+    @Html.ActionLink("Back to Client", "../Client/Details/", new { id = ViewBag.PatientID },  new { @class = "btn btn-default"})
 </div>
 <div class="col-lg-2"></div>
