@@ -173,7 +173,6 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <None Include="Scripts\_references.js" />
-    <Content Include="Views\Shared\jonathan.css" />
     <Content Include="Web.config" />
     <Content Include="Views\Login\Create.cshtml" />
     <Content Include="Views\Login\Delete.cshtml" />

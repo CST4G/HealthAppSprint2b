@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "View Clients";
 }
+<h2>Clients</h2>
 <div class="col-lg-2">
 
  <br />
@@ -26,96 +27,100 @@
      </div>
     </div>
 <div class="col-lg-8">
-    <h2>Clients</h2>
+   
     <b class="pull-left">@Html.ActionLink("Create New", "Create")</b>
 
-    <table class="table">
+  
         @foreach (var item in Model)
-        {
-            <thead style="padding:100px">
-                
-                <th colspan="4" style="background-color:#d2d5ca">
-                    <b>@Html.DisplayFor(model => item.ClientFirstName) @Html.DisplayFor(model => item.ClientLastName)</b>
-                </th>
-            </thead>
-            <tr>
+{
+    <table class="table table-striped">
+        <thead style="padding:100px">
 
-                <td rowspan="3" style="width:10%">
-                    <img src="@Url.Content("~/Client/ViewImage/" + @Html.DisplayFor(model => item.ClientID))" style="height: 98px; width: 103px" />
-                </td>
-            </tr>
-            <tr>
-                <td >
-                    <b>@Html.DisplayNameFor(model => model.ClientGender)</b>
-                </td>
+        <th colspan="4" >
+            <b>@Html.DisplayFor(model => item.ClientFirstName) @Html.DisplayFor(model => item.ClientLastName)</b>
+        </th>
+        </thead>
+        <tr>
 
-                <td >
-                    @Html.DisplayFor(model => item.ClientGender)
-                </td>
-                <td>
-                    <b>@Html.ActionLink("Edit", "Edit", new { id = item.ClientID })</b>
-                </td>
-            </tr>
-            <tr>
-                <td >
-                    <b>@Html.DisplayNameFor(model => model.ClientDOB)</b>
-                </td>
-                <td >
-                    @Html.DisplayFor(model => item.ClientDOB)
-                </td>
-                <td>
-                    <b>@Html.ActionLink("Details", "Details", new { id = item.ClientID })</b>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <b>@Html.DisplayNameFor(model => model.ClientHealthNum)</b>
-                </td>
-                <td colspan="1">
-                    @Html.DisplayFor(model => item.ClientHealthNum)
-                </td>
-                
-                <td>
-                    <b>@Html.ActionLink("Add Services", "../Services/AddServices", new { id = item.ClientID, roomNo = item.ClientBedNum })</b>
+            <td rowspan="3" style="width: 10%; margin-spacing:0 25">
+                <img src="@Url.Content("~/Client/ViewImage/" + @Html.DisplayFor(model => item.ClientID))" style="height: 98px; width: 103px" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>@Html.DisplayNameFor(model => model.ClientGender)</b>
+            </td>
 
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <b>@Html.DisplayNameFor(model => model.ClientMarital)</b>
-                </td>
-                <td colspan="1">
-                    @Html.DisplayFor(model => item.ClientMarital)
-                </td>
-                
-                <td>
-                    <b>@Html.ActionLink("View Subscribed Services", "GetServices", new { id = item.ClientID })</b>
+            <td>
+                @Html.DisplayFor(model => item.ClientGender)
+            </td>
+            <td>
+                <b>@Html.ActionLink("Edit", "Edit", new { id = item.ClientID })</b>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>@Html.DisplayNameFor(model => model.ClientDOB)</b>
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.ClientDOB)
+            </td>
+            <td>
+                <b>@Html.ActionLink("Details", "Details", new { id = item.ClientID })</b>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <b>@Html.DisplayNameFor(model => model.ClientHealthNum)</b>
+            </td>
+            <td colspan="1">
+                @Html.DisplayFor(model => item.ClientHealthNum)
+            </td>
 
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <b>@Html.DisplayNameFor(model => model.ClientBedNum)</b>
-                </td>
-                <td colspan="1">
-                    @Html.DisplayFor(model => item.ClientBedNum)
-                </td>
-                <td>
-                    <b>@Html.ActionLink("Delete", "Delete", new { id = item.ClientID })</b>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <b>@Html.DisplayNameFor(model => model.ClientFamilyDoc)</b>
-                </td>
-                <td colspan="1">
-                    @Html.DisplayFor(model => item.ClientFamilyDoc)
-                </td>
-                <td>
-                    <b>@Html.ActionLink("Upload Photo", "UploadPicture", new { id = item.ClientID })</b>
-                </td>
-            </tr>
-        }
+            <td>
+                <b>@Html.ActionLink("Add Services", "../Services/AddServices", new { id = item.ClientID, roomNo = item.ClientBedNum })</b>
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <b>@Html.DisplayNameFor(model => model.ClientMarital)</b>
+            </td>
+            <td colspan="1">
+                @Html.DisplayFor(model => item.ClientMarital)
+            </td>
+
+            <td>
+                <b>@Html.ActionLink("View Subscribed Services", "GetServices", new { id = item.ClientID })</b>
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <b>@Html.DisplayNameFor(model => model.ClientBedNum)</b>
+            </td>
+            <td colspan="1">
+                @Html.DisplayFor(model => item.ClientBedNum)
+            </td>
+            <td>
+                <b>@Html.ActionLink("Delete", "Delete", new { id = item.ClientID })</b>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <b>@Html.DisplayNameFor(model => model.ClientFamilyDoc)</b>
+            </td>
+            <td colspan="1">
+                @Html.DisplayFor(model => item.ClientFamilyDoc)
+            </td>
+            <td>
+                <b>@Html.ActionLink("Upload Photo", "UploadPicture", new { id = item.ClientID })</b>
+            </td>
+        </tr>
+    </table>
+            <br/>
+            <br/>
+}
 
 </div>
 <div class="col-lg-2"></div>

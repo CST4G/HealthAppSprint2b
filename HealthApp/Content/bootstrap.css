@@ -1258,6 +1258,7 @@ pre code {
   .col-lg-11 {
     float: left;
   }
+
   .col-lg-1 {
     width: 8.333333333333332%;
   }
@@ -1402,7 +1403,9 @@ pre code {
   .col-lg-offset-11 {
     margin-left: 91.66666666666666%;
   }
+
 }
+@media (min-width: @screen-lg-min) { font-size:100px /* Because I'm blind and have no idea how responsive layouts work*/}
 
 table {
   max-width: 100%;

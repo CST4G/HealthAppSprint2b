@@ -2,7 +2,7 @@
 <!-- This view displays today's Schedule-->
 @{
     ViewBag.Title = "PopulateTasks";
-   
+
 }
 
 
@@ -18,6 +18,8 @@
                 <th>Expected Time</th>
                 <th>Actual Time</th>
                 <th>Comments</th>
+                <th>Add Comments</th>
+
             </tr>
         </thead>
         @foreach (var item in Model)
@@ -30,10 +32,14 @@
                     <td>@Html.DisplayFor(model => item.duration)</td>
                     <td>@Html.DisplayFor(model => item.actual)</td>
                     <td>@Html.DisplayFor(modelItem => item.comments)</td>
-                    @if (true)
-                    {
-                        <td>@Html.ActionLink("Completed", "TaskComplete", new { id = item.ID }, new { data_mini = "true", data_role = "button", data_theme = "e", data_icon = "check" })</td>
-                    }
+                    <td style="width:20px;">
+                        @using (Html.BeginForm("TaskComplete", "Tasks", new { id = item.ID }, FormMethod.Get))
+                        {
+                            <button type="submit" class="glyphicon glyphicon-check " style=" color:#428bca; border: 0; background: transparent"></button>
+
+                        }
+
+                    </td>
                 </tr>
             </tbody>
 
@@ -41,5 +47,3 @@
 
     </table>
 </div>
-
-
