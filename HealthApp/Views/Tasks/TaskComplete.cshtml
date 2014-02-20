@@ -17,6 +17,8 @@
         <legend>Task</legend>
 
         @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.ClientFirstName)
+        @Html.HiddenFor(model => model.ClientLastName)
         @Html.HiddenFor(model => model.taskID)
         @Html.HiddenFor(model => model.PatientID)
         @Html.HiddenFor(model => model.RoomNo)

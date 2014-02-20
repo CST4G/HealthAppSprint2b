@@ -46,7 +46,7 @@ namespace healthApp.Controllers
                 case 2:
                     return  db.Client.ToList().OrderBy(profile =>profile.ClientLastName);
                 case 3:
-                    return db.Client.ToList().OrderBy(profile => profile.ClientBedNum);
+                    return db.Client.ToList().OrderBy(profile => profile.RoomNumber);
                 case 4:
                     return db.Client.ToList().OrderBy(profile => profile.ClientDOB);
                 default:
@@ -146,7 +146,7 @@ namespace healthApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ClientID,ClientFirstName,ClientLastName,ClientMarital,ClientDOB,ClientHealthNum,ClientGender,ClientBedNum,ClientFamilyDoc,ClientPicture")] Client client)
+        public ActionResult Create([Bind(Include = "ClientID,ClientFirstName,ClientLastName,ClientMarital,ClientDOB,ClientHealthNum,ClientGender,RoomNumber,ClientFamilyDoc,ClientPicture")] Client client)
         {
             if (hasAdminAccess())
             {
@@ -186,7 +186,7 @@ namespace healthApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ClientID,ClientFirstName,ClientLastName,ClientMarital,ClientDOB,ClientHealthNum,ClientGender,ClientBedNum,ClientFamilyDoc,ClientPicture")] Client client)
+        public ActionResult Edit([Bind(Include = "ClientID,ClientFirstName,ClientLastName,ClientMarital,ClientDOB,ClientHealthNum,ClientGender,RoomNumber,ClientFamilyDoc,ClientPicture")] Client client)
         {
             if (hasAdminAccess())
             {

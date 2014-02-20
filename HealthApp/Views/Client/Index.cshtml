@@ -18,8 +18,8 @@
             <li><a href="">Choose an option</a></li>
             <li class="divider"></li>
             <li><a href="/Client/Index/1">First Name</a></li>
-            <li><a href="/Client/Index/2">LastName</a></li>
-            <li><a href="/Client/Index/3">BedNumber</a></li>
+            <li><a href="/Client/Index/2">Last Name</a></li>
+            <li><a href="/Client/Index/3">Room Number</a></li>
             <li><a href="/Client/Index/3">DOB</a></li>
 
         </ul>
@@ -76,7 +76,7 @@
                 </td>
                 
                 <td>
-                    <b>@Html.ActionLink("Add Services", "../Services/AddServices", new { id = item.ClientID, roomNo = item.ClientBedNum })</b>
+                    <b>@Html.ActionLink("Add Services", "../Services/AddServices", new { id = item.ClientID, fn = item.ClientFirstName, ln = item.ClientLastName, roomNo = item.RoomNumber })</b>
 
                 </td>
             </tr>
@@ -95,10 +95,10 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <b>@Html.DisplayNameFor(model => model.ClientBedNum)</b>
+                    <b>@Html.DisplayNameFor(model => model.RoomNumber)</b>
                 </td>
                 <td colspan="1">
-                    @Html.DisplayFor(model => item.ClientBedNum)
+                    @Html.DisplayFor(model => item.RoomNumber)
                 </td>
                 <td>
                     <b>@Html.ActionLink("Delete", "Delete", new { id = item.ClientID })</b>

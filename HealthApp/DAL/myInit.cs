@@ -36,11 +36,11 @@ namespace healthApp.DAL {
 
             var clients = new List<Client>
             {
-                new Client{ClientID=1, ClientFirstName="John", ClientLastName="Doe", ClientDOB=yesterday, ClientHealthNum=4, ClientGender="Male", ClientBedNum=1, ClientFamilyDoc="John Wayne"},
-                new Client{ClientID=2, ClientFirstName="Fred", ClientLastName="Daily", ClientDOB=yesterday, ClientHealthNum=2, ClientGender="Male", ClientBedNum=2, ClientFamilyDoc="Mason Family"},
-                new Client{ClientID=3, ClientFirstName="Charlie", ClientLastName="Zoolander", ClientDOB=yesterday, ClientHealthNum=5, ClientGender="Male", ClientBedNum=3, ClientFamilyDoc="Dr Who"},
-                new Client{ClientID=4, ClientFirstName="Susan", ClientLastName="Francis", ClientDOB=yesterday, ClientHealthNum=3, ClientGender="Female", ClientBedNum=4, ClientFamilyDoc="You"},
-                new Client{ClientID=5, ClientFirstName="Betty", ClientLastName="Faulker", ClientDOB=yesterday, ClientHealthNum=1, ClientGender="Female", ClientBedNum=5, ClientFamilyDoc="Surely"},
+                new Client{ClientID=1, ClientFirstName="John", ClientLastName="Doe", ClientDOB=yesterday, ClientHealthNum=4, ClientGender="Male", RoomNumber=1, ClientFamilyDoc="John Wayne"},
+                new Client{ClientID=2, ClientFirstName="Fred", ClientLastName="Daily", ClientDOB=yesterday, ClientHealthNum=2, ClientGender="Male", RoomNumber=2, ClientFamilyDoc="Mason Family"},
+                new Client{ClientID=3, ClientFirstName="Charlie", ClientLastName="Zoolander", ClientDOB=yesterday, ClientHealthNum=5, ClientGender="Male", RoomNumber=3, ClientFamilyDoc="Dr Who"},
+                new Client{ClientID=4, ClientFirstName="Susan", ClientLastName="Francis", ClientDOB=yesterday, ClientHealthNum=3, ClientGender="Female", RoomNumber=4, ClientFamilyDoc="You"},
+                new Client{ClientID=5, ClientFirstName="Betty", ClientLastName="Faulker", ClientDOB=yesterday, ClientHealthNum=1, ClientGender="Female", RoomNumber=5, ClientFamilyDoc="Surely"},
             };
 
             clients.ForEach( s => context.Client.Add( s ) );

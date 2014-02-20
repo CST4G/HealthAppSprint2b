@@ -46,11 +46,11 @@ namespace healthApp.Models
         [Display(Name = "Gender")]
         public string ClientGender { get; set; }
 
-        //Clients bed number: ranging from 1 to 1000
+        //Clients room number: ranging from 1 to 1000
         [Required(ErrorMessage = "This field is required")]
-        [Display(Name = "Bed Number")]
+        [Display(Name = "Room Number")]
         [Range(1, 1000, ErrorMessage = "Must be between 1 and 1000")]
-        public int ClientBedNum { get; set; }
+        public int RoomNumber { get; set; }
 
         //Name of clients family doctor
         [Display(Name = "Family Doctor")]
@@ -67,8 +67,6 @@ namespace healthApp.Models
         }
 
     }
-
-
 
     public class ClientDBContext : DbContext
     {

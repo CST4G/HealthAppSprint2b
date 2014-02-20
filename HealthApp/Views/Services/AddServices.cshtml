@@ -25,6 +25,24 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.ClientFirstName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <!-- @Html.TextBoxFor(model => model.ClientFirstName, new { disabled= "disabled",@readonly = "readonly" })-->
+                @Html.EditorFor(model => model.ClientFirstName)
+                @Html.ValidationMessageFor(model => model.ClientFirstName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ClientLastName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <!-- @Html.TextBoxFor(model => model.ClientLastName, new { disabled= "disabled",@readonly = "readonly" })-->
+                @Html.EditorFor(model => model.ClientLastName)
+                @Html.ValidationMessageFor(model => model.ClientLastName)
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.Task, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Task)

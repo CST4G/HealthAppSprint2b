@@ -93,7 +93,7 @@ namespace healthApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,taskID,PatientID,RoomNo,Task,tDate,duration,actual,comments")] Tasks schedule)
+        public ActionResult Create([Bind(Include = "ID, ClientFirstName, ClientLastName, taskID,PatientID,RoomNo,Task,tDate,duration,actual,comments")] Tasks schedule)
         {
             if (ModelState.IsValid)
             {
@@ -125,7 +125,7 @@ namespace healthApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,taskID,PatientID,RoomNo,Task,tDate,duration,actual,comments")] Tasks schedule)
+        public ActionResult Edit([Bind(Include = "ID,ClientFirstName, ClientLastName,taskID,PatientID,RoomNo,Task,tDate,duration,actual,comments")] Tasks schedule)
         {
             if (ModelState.IsValid)
             {
