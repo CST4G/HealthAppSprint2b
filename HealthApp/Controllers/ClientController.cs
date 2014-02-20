@@ -20,7 +20,7 @@ namespace healthApp.Controllers
         public ActionResult Index(int? id)
         {
             @ViewBag.Sidebar = "Client";
-            if (hasAdminAccess())
+            if (hasUserAccess())
             {
                 if (id.HasValue)
                 {
