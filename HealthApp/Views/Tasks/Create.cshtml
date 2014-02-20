@@ -16,14 +16,6 @@
         @Html.ValidationSummary(true)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PatientID, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PatientID)
-                @Html.ValidationMessageFor(model => model.PatientID)
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.RoomNo, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.RoomNo)
@@ -34,16 +26,10 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Task, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Task)
-                @Html.ValidationMessageFor(model => model.Task)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.tDate, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.tDate)
-                @Html.ValidationMessageFor(model => model.tDate)
+                <select id="Task" name="Task">
+                    <option value="medication">Medication</option>
+                    <option value="Laundry">Laundry</option>
+                </select>
             </div>
         </div>
 
@@ -52,14 +38,6 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.duration)
                 @Html.ValidationMessageFor(model => model.duration)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.actual, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.actual)
-                @Html.ValidationMessageFor(model => model.actual)
             </div>
         </div>
 
