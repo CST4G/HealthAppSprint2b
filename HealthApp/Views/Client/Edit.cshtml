@@ -6,99 +6,108 @@
 
 <h2>Edit Client</h2>
 
-<div class="col-lg-1 col-md-3 col-sm-3 col-xs-1 "></div>
-<div class="col-lg-10 col-md-6 col-sm-6 col-xs-10 ">
-    @using (Html.BeginForm())
+<div class="col-lg-1 col-md-1 col-sm-1  "></div>
+@using (Html.BeginForm())
     { @Html.AntiForgeryToken()
-        <div class="col-lg-1 col-md-6 col-sm-6 col-xs-10 "></div>
-        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-10">
+<div class="col-lg-10 col-md-10 col-sm-10  ">
+   
+    <div class="col-lg-2 col-md-2 col-sm-10 "></div>
+    <div class="col-lg-4 col-md-5 col-sm-10 ">
 
-            <div class="form-horizontal ">
-                <h3>Change @Html.DisplayFor(model => model.ClientFirstName)'s info </h3>
+        <div class="form-horizontal ">
+            <h3>Change @Html.DisplayFor(model => model.ClientFirstName)'s info </h3>
 
-                @Html.ValidationSummary(true)
-                @Html.HiddenFor(model => model.ClientID)
-
-
-                @Html.LabelFor(model => model.ClientFirstName, new { @class = "control-label" })
-
-                @Html.TextBoxFor(model => model.ClientFirstName, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ClientFirstName)
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.ClientID)
+            @Html.HiddenFor(model => model.ClientPicture)
 
 
+            @Html.LabelFor(model => model.ClientFirstName, new { @class = "control-label" })
 
-                @Html.LabelFor(model => model.ClientLastName, new { @class = "control-label" })
+            @Html.TextBoxFor(model => model.ClientFirstName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ClientFirstName)
 
-                @Html.TextBoxFor(model => model.ClientLastName, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ClientLastName)
+            @Html.LabelFor(model => model.ClientLastName, new { @class = "control-label" })
 
-
-                @Html.LabelFor(model => model.ClientMarital, new { @class = "control-label" })
-
-                @Html.TextBoxFor(model => model.ClientMarital, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ClientMarital)
+            @Html.TextBoxFor(model => model.ClientLastName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ClientLastName)
 
 
-                @Html.LabelFor(model => model.ClientDOB, new { @class = "control-label" })
+            @Html.LabelFor(model => model.ClientMarital, new { @class = "control-label" })
 
-                @Html.TextBoxFor(model => model.ClientDOB, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ClientDOB)
+            @Html.TextBoxFor(model => model.ClientMarital, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ClientMarital)
 
-            </div>
+
+            @Html.LabelFor(model => model.ClientDOB, new { @class = "control-label" })
+
+            @Html.TextBoxFor(model => model.ClientDOB, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ClientDOB)
+
         </div>
+    </div>
 
-        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-10">
+    <div class="col-lg-4 col-md-5 col-sm-10 ">
 
-            <div class="form-horizontal" id="sideForm">
-                <h3></h3>
+        <div class="form-horizontal" id="sideForm">
+            <h3></h3>
 
-                @Html.LabelFor(model => model.ClientHealthNum, new { @class = "control-label" })
+            @Html.LabelFor(model => model.ClientHealthNum, new { @class = "control-label" })
 
-                @Html.TextBoxFor(model => model.ClientHealthNum, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ClientHealthNum)
-
-
-
-
-                @Html.LabelFor(model => model.ClientGender, new { @class = "control-label" })
-
-                @Html.TextBoxFor(model => model.ClientGender, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ClientGender)
+            @Html.TextBoxFor(model => model.ClientHealthNum, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ClientHealthNum)
 
 
 
 
-                @Html.LabelFor(model => model.ClientBedNum, new { @class = "control-label" })
+            @Html.LabelFor(model => model.ClientGender, new { @class = "control-label" })
 
-                @Html.TextBoxFor(model => model.ClientBedNum, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ClientBedNum)
-
-
-
-                @Html.LabelFor(model => model.ClientFamilyDoc, new { @class = "control-label" })
-
-                @Html.TextBoxFor(model => model.ClientFamilyDoc, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ClientFamilyDoc)
+            @Html.TextBoxFor(model => model.ClientGender, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ClientGender)
 
 
-            </div>
+
+
+            @Html.LabelFor(model => model.ClientBedNum, new { @class = "control-label" })
+
+            @Html.TextBoxFor(model => model.ClientBedNum, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ClientBedNum)
+
+
+
+            @Html.LabelFor(model => model.ClientFamilyDoc, new { @class = "control-label" })
+
+            @Html.TextBoxFor(model => model.ClientFamilyDoc, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ClientFamilyDoc)
+
+            @Html.HiddenFor(model => model.ClientID)
+
         </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <br/>
+    </div>
+   <br/>
+    
+   
+        <div class="col-lg-8 col-md-9 col-sm-10   "></div>
+        <div class="col-lg-4 col-md-3 col-sm-7   ">
+            <div class="form-group">
+
+                <br /><br /><br />
                 <input class="btn btn-primary" type="submit" value="Save" />
+                <a href="/Client/Details/@Model.ClientID " class="btn btn-danger">Cancel</a>
+
             </div>
         </div>
+        <br />
 
 
-        <div class="col-lg-1 col-md-6 col-sm-6 col-xs-10 "></div>
+    </div> <br /><br /><br />
+   
     }
 </div>
+   
 
-<div class="col-lg-1 col-md-3 col-sm-3 col-xs-1 "></div>
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "></div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
