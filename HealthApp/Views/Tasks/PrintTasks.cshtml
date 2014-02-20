@@ -1,0 +1,43 @@
+﻿@model IEnumerable<healthApp.Models.Tasks>
+<!-- This view puts views in the view using the view-->
+@{
+    ViewBag.Title = "Print Tasks";
+}
+<style type="text/css" media="print">
+    * { visibility: hidden; }
+    #tasks { visibility: visible; } 
+</style>
+
+<div class="col-lg-12">
+    <table id="tasks" class="table">
+        <thead>
+            <tr>
+                <th><h1>@ViewBag.User : @ViewBag.ShiftStart to @ViewBag.ShiftEnd</h1></th>
+            </tr>
+            <tr>
+                <th>Client ID</th>
+                <th>Room Number</th>
+                <th>Service Type</th>
+                <th>Actual Time</th>
+                <th>Comments</th>
+
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@Html.DisplayFor(model => item.PatientID)</td>
+                    <td>@Html.DisplayFor(model => item.RoomNo)</td>
+                    <td>@Html.DisplayFor(model => item.Task)</td>
+                    <td>@Html.DisplayFor(model => item.actual)</td>
+                    <td>@Html.DisplayFor(modelItem => item.comments)</td>
+                    
+                </tr>
+            </tbody>
+
+        }
+
+    </table>
+    <input type="button" value="PRINT" onclick="window.print()" />
+</div>

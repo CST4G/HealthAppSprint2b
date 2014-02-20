@@ -158,6 +158,36 @@ namespace healthApp.Controllers
             return RedirectToAction("Index");
         }
 
+        // GET: /Schedule/
+        // Sends to the PrintTasks View a set of a tasks (a shift)
+        public ActionResult PrintTasks()
+        {
+            String[] delimited = User.Identity.Name.ToString().Split('&');
+            String userID = delimited[0];
+
+            DateTime shiftStart = DateTime.Today;
+            DateTime shiftEnd = DateTime.Today;
+            if (userID == "morning")
+            {
+                shiftStart = DateTime.Today;
+                shiftEnd = DateTime.Today.AddHours(12);
+            }
+            else if (userID.Equals("evening"))
+            {
+                shiftStart = DateTime.Today.AddHours(12);
+                shiftEnd = DateTime.Today.AddHours(24);
+            }
+
+            ViewBag.ShiftStart = shiftStart.ToString();
+            ViewBag.ShiftEnd = shiftEnd.ToString();
+            ViewBag.User = userID;
+
+            var tasks = from s in db.Tasks
+                        where (s.tDate >= shiftStart && s.tDate <= shiftEnd)
+                        select s;
+            return View(tasks);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
