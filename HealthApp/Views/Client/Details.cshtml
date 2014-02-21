@@ -58,7 +58,7 @@
             </td>
 
             <td>
-                <b>@Html.ActionLink("Add Services", "../Services/AddServices", new { id = Model.ClientID, roomNo = Model.ClientBedNum })</b>
+                <b>@Html.ActionLink("Add Services", "../Services/AddServices", new { id = Model.ClientID, roomNo = Model.RoomNumber })</b>
 
             </td>
         </tr>
@@ -77,10 +77,10 @@
         </tr>
         <tr>
             <td colspan="2">
-                <b>@Html.DisplayNameFor(model => model.ClientBedNum)</b>
+                <b>@Html.DisplayNameFor(model => model.RoomNumber)</b>
             </td>
             <td colspan="1">
-                @Html.DisplayFor(model => model.ClientBedNum)
+                @Html.DisplayFor(model => model.RoomNumber)
             </td>
             <td>
                 <b>@Html.ActionLink("Delete", "Delete", new { id = Model.ClientID })</b>
