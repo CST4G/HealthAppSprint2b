@@ -12,7 +12,8 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Client ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
                 <th>Room Number</th>
                 <th>Service Type</th>
                 <th>Expected Time</th>
@@ -26,7 +27,8 @@
         {
             <tbody>
                 <tr>
-                    <td>@Html.DisplayFor(model => item.PatientID)</td>
+                    <td>@Html.DisplayFor(model => item.ClientFirstName)</td>
+                    <td>@Html.DisplayFor( model => item.ClientLastName)</td>
                     <td>@Html.DisplayFor(model => item.RoomNo)</td>
                     <td>@Html.DisplayFor(model => item.Task)</td>
                     <td>@Html.DisplayFor(model => item.duration)</td>
