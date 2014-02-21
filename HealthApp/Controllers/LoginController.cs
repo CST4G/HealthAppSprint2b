@@ -137,16 +137,9 @@ namespace healthApp.Controllers
 
             if (hasAdminAccess())
             {
-                if (ModelState.IsValid)
-                {
                     db.Accounts.Add(accounts);
                     db.SaveChanges();
                     return RedirectToAction("Index");
-                }
-                else
-                {
-                    return RedirectToAction("Index", "Home");
-                }
             }
             else
             {
