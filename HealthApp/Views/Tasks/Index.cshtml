@@ -36,7 +36,6 @@
                         @using (Html.BeginForm("TaskComplete", "Tasks", new { id = item.ID }, FormMethod.Get))
                         {
                             <button type="submit" class="glyphicon glyphicon-check " style=" color:#428bca; border: 0; background: transparent"></button>
-
                         }
 
                     </td>
@@ -46,4 +45,5 @@
         }
 
     </table>
+    @Html.ActionLink("Print Report", "PrintTasks", new {id = ""}, new { @class = "btn btn-default" })
 </div>
