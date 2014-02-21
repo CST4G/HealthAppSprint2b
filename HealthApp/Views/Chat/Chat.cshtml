@@ -52,11 +52,13 @@
                                     flip = true;
                                 }
                             }
-                                <input type="hidden" id="flipper" value=@flip />
+                                
 
 
                             } 
                         </ul>
+
+                        <input type="hidden" id="flipper" value=@flip />
                     </div>
                     <div class="panel-footer">
                         <div class="input-group">
@@ -102,7 +104,7 @@
                 if (flip) {
                     var append = '<li class=\"right clearfix\"> <div class=\"clearfix\"> <div class=\"pull-left header\">';
                     append += '<strong class="pull-right primary-font">';
-                  
+                    
                        
                     flip =false;
                 } else {
@@ -136,7 +138,14 @@
                     $('#btn-input').val('').focus();
                 });
                 
-
+                $('#btn-input').keypress(function (event) {
+                    if (event.keyCode == 13) {
+                        // Call the Send method on the hub.
+                        chat.server.send($('#btn-input').val());
+                        // Clear text box and reset focus for next comment.
+                        $('#btn-input').val('').focus();
+                    }
+                });
 
             });
         });
