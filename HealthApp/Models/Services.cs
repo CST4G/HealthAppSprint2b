@@ -17,6 +17,16 @@ namespace healthApp.Models
         [Display(Name = "Patient ID")]
         [Required]
         public string PatientID { get; set; }
+        [Required( ErrorMessage = "This field is required" )]
+        [Display( Name = "First Name" )]
+        [StringLength( 12, ErrorMessage = "Name limit is 12 characters" )]
+        public string ClientFirstName { get; set; }
+
+        //Clients last name limited to length 12
+        [Required( ErrorMessage = "This field is required" )]
+        [Display( Name = "Last Name" )]
+        [StringLength( 12, ErrorMessage = "Name limit is 12 characters" )]
+        public string ClientLastName { get; set; }
 
         [Display(Name = "Room Number")]
         public string RoomNo { get; set; }

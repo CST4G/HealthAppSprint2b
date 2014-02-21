@@ -28,9 +28,22 @@ namespace healthApp.Controllers
             if (hasAdminAccess())
             {
                 DateTime date = DateTime.Today; //date will be set to today
-                String[] days = { "Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat" };
+                String[] days = { "Su", "M", "Tu", "W", "Th", "F", "Sa" };
                 String dow = days[(int)date.DayOfWeek]; //day of week
                 int dom = date.Day;
+            
+                 //delete previous entries to avoid duplicates
+             
+                 DateTime tomorrow = DateTime.Today.AddDays(1);
+                 var todayt = from s in db.Tasks
+                              where (s.tDate >= DateTime.Today && s.tDate <= tomorrow)
+                              select s;
+                 foreach (var tTask in todayt)
+                 {
+                     db.Tasks.Remove(tTask);
+                 }
+                 db.SaveChanges();
+
                 //call static method from tasks model to get all the tasks needed to generate schedule. 
                 var tasks = Services.getTasks(db, date, dow, dom);
 
@@ -40,6 +53,8 @@ namespace healthApp.Controllers
                 {
                     sc.taskID = item.ID;
                     sc.PatientID = item.PatientID;
+                    sc.ClientFirstName = item.ClientFirstName;
+                    sc.ClientLastName = item.ClientLastName;
                     sc.Task = item.Task;
                     sc.RoomNo = item.RoomNo;
                     sc.duration = item.duration;
@@ -95,7 +110,7 @@ namespace healthApp.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create([Bind(Include = "ID,PatientID,RoomNo,Task,duration,dtStart,dtEnd,freq,interval,count,byDay,byMonthDay")] Services tasks)
+        public ActionResult Create( [Bind( Include = "ID,ClientFirstName, ClientLastName,PatientID,RoomNo,Task,duration,dtStart,dtEnd,freq,interval,count,byDay,byMonthDay" )] Services tasks )
         {
             if (hasAdminAccess())
             {
@@ -110,7 +125,7 @@ namespace healthApp.Controllers
             }
             return RedirectToAction("Index");
         }
-        public ActionResult AddServices(int? id, int? roomNo)
+        public ActionResult AddServices( int? id, string fn, string ln, int? roomNo )
         {
 
             if (id == null)
@@ -119,6 +134,8 @@ namespace healthApp.Controllers
             }
             Services tasks = new Services();
             tasks.PatientID = id.ToString();
+            tasks.ClientFirstName = fn.ToString();
+            tasks.ClientLastName = ln.ToString();
             tasks.RoomNo = "";
             tasks.Task = "";
             tasks.duration = 0;
@@ -134,7 +151,7 @@ namespace healthApp.Controllers
             return View(tasks);
         }
         [HttpPost]
-        public ActionResult AddServices([Bind(Include = "ID,PatientID,RoomNo,Task,duration,dtStart,dtEnd,freq,interval,count,byDay,byMonthDay")] Services tasks)
+        public ActionResult AddServices( [Bind( Include = "ID,ClientFirstName, ClientLastName,PatientID,RoomNo,Task,duration,dtStart,dtEnd,freq,interval,count,byDay,byMonthDay" )] Services tasks )
         {
             if (ModelState.IsValid)
             {
@@ -169,7 +186,7 @@ namespace healthApp.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "ID,PatientID,RoomNo,Task,duration,dtStart,dtEnd,freq,interval,count,byDay,byMonthDay")] Services tasks)
+        public ActionResult Edit( [Bind( Include = "ID,ClientFirstName, ClientLastName, PatientID,RoomNo,Task,duration,dtStart,dtEnd,freq,interval,count,byDay,byMonthDay" )] Services tasks )
         {
             if (hasAdminAccess())
             {

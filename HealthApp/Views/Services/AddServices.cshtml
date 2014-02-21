@@ -6,84 +6,106 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm())
-{
+@using ( Html.BeginForm() ) {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
         <h4>Services</h4>
         <hr />
-        @Html.ValidationSummary(true)
+        @Html.ValidationSummary( true )
+
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Task, new { @class = "control-label col-md-2" })
+            @Html.LabelFor( model => model.ClientFirstName, new { @class = "control-label col-md-2" } )
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Task)
-                @Html.ValidationMessageFor(model => model.Task)
+                <!-- @Html.TextBoxFor(model => model.ClientFirstName, new { disabled= "disabled",@readonly = "readonly" })-->
+                @Html.EditorFor( model => model.ClientFirstName )
+                @Html.ValidationMessageFor( model => model.ClientFirstName )
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor( model => model.ClientLastName, new { @class = "control-label col-md-2" } )
+            <div class="col-md-10">
+                <!-- @Html.TextBoxFor(model => model.ClientLastName, new { disabled= "disabled",@readonly = "readonly" })-->
+                @Html.EditorFor( model => model.ClientLastName )
+                @Html.ValidationMessageFor( model => model.ClientLastName )
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor( model => model.Task, new { @class = "control-label col-md-2" } )
+            <div class="col-md-10">
+                @Html.EditorFor( model => model.Task )
+                @Html.ValidationMessageFor( model => model.Task )
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.duration, new { @class = "control-label col-md-2" })
+            @Html.LabelFor( model => model.duration, new { @class = "control-label col-md-2" } )
             <div class="col-md-10">
-                @Html.EditorFor(model => model.duration,  new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.duration)
+                @Html.EditorFor( model => model.duration, new { @class = "form-control" } )
+                @Html.ValidationMessageFor( model => model.duration )
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.dtStart, new { @class = "control-label col-md-2" })
+            @Html.LabelFor( model => model.dtStart, new { @class = "control-label col-md-2" } )
             <div class="col-md-10">
-                @Html.EditorFor(model => model.dtStart, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.dtStart)
+                @Html.EditorFor( model => model.dtStart, new { @class = "form-control" } )
+                @Html.ValidationMessageFor( model => model.dtStart )
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.dtEnd, new { @class = "control-label col-md-2" })
+            @Html.LabelFor( model => model.dtEnd, new { @class = "control-label col-md-2" } )
             <div class="col-md-10">
-                @Html.EditorFor(model => model.dtEnd, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.dtEnd)
+                @Html.EditorFor( model => model.dtEnd, new { @class = "form-control" } )
+                @Html.ValidationMessageFor( model => model.dtEnd )
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.freq, new { @class = "control-label col-md-2" })
+            @Html.LabelFor( model => model.freq, new { @class = "control-label col-md-2" } )
             <div class="col-md-10">
-                @Html.EditorFor(model => model.freq, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.freq)
+                @Html.EditorFor( model => model.freq, new { @class = "form-control" } )
+                @Html.ValidationMessageFor( model => model.freq )
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.interval, new { @class = "control-label col-md-2" })
+            @Html.LabelFor( model => model.interval, new { @class = "control-label col-md-2" } )
             <div class="col-md-10">
-                @Html.EditorFor(model => model.interval, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.interval)
+                @Html.EditorFor( model => model.interval, new { @class = "form-control" } )
+                @Html.ValidationMessageFor( model => model.interval )
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.count, new { @class = "control-label col-md-2" })
+            @Html.LabelFor( model => model.count, new { @class = "control-label col-md-2" } )
             <div class="col-md-10">
-                @Html.EditorFor(model => model.count, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.count)
+                @Html.EditorFor( model => model.count, new { @class = "form-control" } )
+                @Html.ValidationMessageFor( model => model.count )
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.byDay, new { @class = "control-label col-md-2" })
+            @Html.LabelFor( model => model.byDay, new { @class = "control-label col-md-2" } )
             <div class="col-md-10">
-                @Html.EditorFor(model => model.byDay, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.byDay)
+                @Html.EditorFor( model => model.byDay, new { @class = "form-control" } )
+                @Html.ValidationMessageFor( model => model.byDay )
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.byMonthDay, new { @class = "control-label col-md-2" })
+            @Html.LabelFor( model => model.byMonthDay, new { @class = "control-label col-md-2" } )
             <div class="col-md-10">
-                @Html.EditorFor(model => model.byMonthDay, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.byMonthDay)
+                @Html.EditorFor( model => model.byMonthDay, new { @class = "form-control" } )
+                @Html.ValidationMessageFor( model => model.byMonthDay )
             </div>
         </div>
 
@@ -95,14 +117,14 @@
     </div>
 
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
     <div>
-    @Html.ActionLink("Back to Client", "../Client/Details/", new { id = Model.PatientID })
-    
-</div>
+        @Html.ActionLink( "Back to List", "Index" )
+    </div>
+    <div>
+        @Html.ActionLink( "Back to Client", "../Client/Details/", new { id = Model.PatientID } )
+
+    </div>
 }
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render( "~/bundles/jqueryval" )
 }

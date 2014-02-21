@@ -54,11 +54,11 @@ namespace healthApp.DAL {
             DateTime yesterday = new DateTime( now.Year, now.Month, now.Day - 1 );
             var tasks = new List<Services>
             {
-                new Services{ID=1, created=DateTime.Now, PatientID="1", Task="Feed", duration=1, dtStart=yesterday, freq="daily", count=4},
-                new Services{ID=2, created=DateTime.Now, PatientID="2", Task="Feed", duration=1, dtStart=yesterday, freq="daily", count=4},
-                new Services{ID=3, created=DateTime.Now, PatientID="3", Task="Feed", duration=1, dtStart=yesterday, freq="daily", count=4},
-                new Services{ID=4, created=DateTime.Now, PatientID="4", Task="Feed", duration=1, dtStart=yesterday, freq="daily", count=4},
-                new Services{ID=5, created=DateTime.Now, PatientID="5", Task="Feed", duration=1, dtStart=yesterday, freq="daily", count=4},
+                new Services{ID=1, created=DateTime.Now, PatientID="1", ClientFirstName="John", ClientLastName="Doe", Task="Feed", duration=1, dtStart=yesterday, freq="daily", count=4},
+                new Services{ID=2, created=DateTime.Now, PatientID="2", ClientFirstName="Fred", ClientLastName="Daily",  Task="Feed", duration=1, dtStart=yesterday, freq="daily", count=4},
+                new Services{ID=3, created=DateTime.Now, PatientID="3", ClientFirstName="Charlie", ClientLastName="Zoolander", Task="Feed", duration=1, dtStart=yesterday, freq="daily", count=4},
+                new Services{ID=4, created=DateTime.Now, PatientID="4", ClientFirstName="Susan", ClientLastName="Francis", Task="Feed", duration=1, dtStart=yesterday, freq="daily", count=4},
+                new Services{ID=5, created=DateTime.Now, PatientID="5", ClientFirstName="Betty", ClientLastName="Faulker", Task="Feed", duration=1, dtStart=yesterday, freq="daily", count=4},
             };
 
             tasks.ForEach( s => context.Services.Add( s ) );

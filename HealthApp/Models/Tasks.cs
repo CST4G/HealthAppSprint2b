@@ -13,6 +13,10 @@ namespace healthApp.Models
         public int taskID { get; set; }
         [Display(Name = "Patient ID")]
         public string PatientID { get; set; }
+        [Display( Name = "First Name" )]
+        public string ClientFirstName { get; set; }
+        [Display( Name = "Last Name" )]
+        public string ClientLastName { get; set; }
         [Display(Name = "Room Number")]
         public string RoomNo { get; set; }
         public string Task { get; set; }
