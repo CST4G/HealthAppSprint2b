@@ -7,7 +7,11 @@
 <h2>This is @Html.DisplayFor(model => model.ClientFirstName)</h2>
 @{
 <div>
-   
+    <style type="text/css" media="print">
+        a {
+            visibility: hidden;
+        }
+    </style>
 	
     <table class="table table-striped">
         <thead style="padding:100px">
@@ -99,8 +103,17 @@
     
 </div>
     
-<p>
+<p id="detailsLinks">
     @Html.ActionLink("Edit", "Edit", new { id = Model.ClientID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("Print", "", new{ id =""}, new { id="printButton", onclick = "printPage()" })
 </p>
+<script>
+    function printPage()
+    {
+        window.print();
+        document.getElementById("printButton").style.display = 'none';
+        document.getElementById("detailsLinks").style.display = 'none';
+    }
+</script> 
 }
