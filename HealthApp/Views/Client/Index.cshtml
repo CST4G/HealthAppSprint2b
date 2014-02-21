@@ -78,7 +78,7 @@
             </td>
 
             <td>
-                <b>@Html.ActionLink("Add Services", "../Services/AddServices", new { id = item.ClientID, roomNo = item.RoomNumber })</b>
+                <b>@Html.ActionLink("Add Services", "../Services/AddServices", new { id = item.ClientID, roomNo = item.RoomNumber, fn = item.ClientFirstName, ln = item.ClientLastName })</b>
 
             </td>
         </tr>
