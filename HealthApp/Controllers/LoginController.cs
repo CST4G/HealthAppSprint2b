@@ -101,13 +101,14 @@ namespace healthApp.Controllers
 
                 }
                 Accounts accounts = db.Accounts.Find(id);
+                Credentials credential = Credentials.createFromAccount(accounts);
                 if (accounts == null)
                 {
                     return RedirectToAction("Index");
 
                 }
 
-                return View(accounts);
+                return View(credential);
             }
             else
             {
