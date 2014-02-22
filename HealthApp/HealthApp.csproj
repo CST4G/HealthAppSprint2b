@@ -153,9 +153,13 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\jonathan.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="Properties\PublishProfiles\cshealthapp - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\cshealthapp - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\cshealthapp - Web Deploy %282%29.pubxml" />
