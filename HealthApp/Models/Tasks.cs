@@ -29,10 +29,11 @@ namespace healthApp.Models
         //[Range(1, int.MaxValue, ErrorMessage = "Actual Duration must be greater than {1} units of time")]
         public int actual { get; set; }
         public string comments { get; set; }
-        
         [Display(Name = "Completion")]
         public bool isComplete { get; set; }
-        
+        [Display(Name = "Service Quality")]        
+        public int serviceQuality { get; set; }        
+
     }
 
 }
