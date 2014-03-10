@@ -215,6 +215,10 @@
     <Compile Include="Migrations\201403102108216_igor1.Designer.cs">
       <DependentUpon>201403102108216_igor1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201403102123319_igor2.cs" />
+    <Compile Include="Migrations\201403102123319_igor2.Designer.cs">
+      <DependentUpon>201403102123319_igor2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Accounts.cs" />
     <Compile Include="Models\Chats.cs" />
@@ -279,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201403102108216_igor1.resx">
       <DependentUpon>201403102108216_igor1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403102123319_igor2.resx">
+      <DependentUpon>201403102123319_igor2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

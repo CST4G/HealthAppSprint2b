@@ -31,8 +31,8 @@ namespace healthApp.Models
         public string comments { get; set; }
         [Display(Name = "Completion")]
         public bool isComplete { get; set; }
-        [Display(Name = "Service Quality")]        
-        public int serviceQuality { get; set; }        
+        [Display(Name = "Service Rating")]        
+        public int serviceRating { get; set; }        
 
     }
 

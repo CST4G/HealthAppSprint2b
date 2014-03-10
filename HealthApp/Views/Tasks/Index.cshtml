@@ -17,6 +17,7 @@
                 <th>Service Type</th>
                 <th>Expected Time</th>
                 <th>Actual Time</th>
+                <th>Rating</th>
                 <th>Comments</th>
                 <th>Add Comments</th>
 
@@ -31,6 +32,7 @@
                     <td>@Html.DisplayFor(model => item.Task)</td>
                     <td>@Html.DisplayFor(model => item.duration)</td>
                     <td>@Html.DisplayFor(model => item.actual)</td>
+                    <td>@Html.DisplayFor(model => item.serviceRating)</td>
                     <td>@Html.DisplayFor(modelItem => item.comments)</td>
                     <td style="width:20px;">
                         <!-- method within controller, controller, id and method-->
