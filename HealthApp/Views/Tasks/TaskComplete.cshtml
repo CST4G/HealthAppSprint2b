@@ -38,6 +38,13 @@
             @Html.EditorFor(model => model.actual, new { size = 15 })
             @Html.ValidationMessageFor(model => model.actual)
         </div>
+        <div class="editor-label">
+            Service Quality:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.serviceQuality, new { size = 15 })
+            @Html.ValidationMessageFor(model => model.serviceQuality)
+        </div>
         <p>
             <input type="submit" value="Save" />
         </p>
