@@ -6,10 +6,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Tasks</h4>
         <hr />
@@ -22,12 +22,20 @@
                 @Html.ValidationMessageFor(model => model.PatientID)
             </div>
         </div>
-
+        @{ var taskList = new List<SelectListItem>
+                   {
+                       new SelectListItem{Text="Medication", Value="Medication"},
+                       new SelectListItem{Text="Bath/Shower", Value="Bath/Shower"},
+                       new SelectListItem{Text="House Keeping", Value="House Keeping"}
+                   };
+        }
         <div class="form-group">
             @Html.LabelFor(model => model.Task, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Task)
+                @Html.DropDownList("Task", new SelectList(taskList, "Text", "Value"))
                 @Html.ValidationMessageFor(model => model.Task)
+
+
             </div>
         </div>
 
