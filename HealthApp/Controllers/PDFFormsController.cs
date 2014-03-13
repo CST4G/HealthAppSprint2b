@@ -25,6 +25,23 @@ namespace healthApp.Controllers {
             return File( path + fileName, System.Net.Mime.MediaTypeNames.Application.Pdf, fileName );
         }
 
+        public ActionResult GetForms(int? id)
+        {
+
+            if (id.HasValue)
+            {
+                FormDBContext serviceDB = new FormDBContext();
+                var tasks = PDFForm.listForms(serviceDB, id);
+                return View(tasks);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Client");
+            }
+            
+            
+        }
+
         // GET: /StandardPDFForms/Details/5
         public ActionResult Details( int? id ) {
             if ( id == null ) {
@@ -47,9 +64,10 @@ namespace healthApp.Controllers {
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( HttpPostedFileBase file, [Bind( Include = "ID,Title,fileName" )] PDFForm pdfform ) {
+        public ActionResult Create( HttpPostedFileBase file, [Bind( Include = "ID,Title,fileName,clientName,clientID" )] PDFForm pdfform ) {
 
             if ( ModelState.IsValid ) {
+
                 if ( file != null && file.ContentLength > 0 ) {
                     var fileName = pdfform.fileName + ".pdf";
                     var path = Path.Combine( Server.MapPath( "~/App_Data/" ), fileName );
