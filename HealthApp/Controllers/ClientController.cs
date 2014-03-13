@@ -13,6 +13,50 @@ namespace healthApp.Controllers
 {
     public class ClientController : ControllerAuthentication
     {
+       
+        List<SelectListItem> clientTypeList = new List<SelectListItem>
+        {
+            new SelectListItem{Text="I", Value="I"},
+            new SelectListItem{Text="E", Value="E"},
+            new SelectListItem{Text="L", Value="L"}
+        };
+
+        List<SelectListItem> interpreterList = new List<SelectListItem>
+        {
+            new SelectListItem{Text="Yes", Value="Yes"},
+            new SelectListItem{Text="No", Value="No"},   
+        };
+
+
+        List<SelectListItem> hearinglist = new List<SelectListItem>
+        {
+            new SelectListItem{Text="Good", Value="Good"},
+            new SelectListItem{Text="Bad", Value="Bad"},
+        };
+
+
+        List<SelectListItem> visionlist = new List<SelectListItem>
+        {
+            new SelectListItem{Text="Good", Value="Good"},
+            new SelectListItem{Text="Bad", Value="Bad"},
+        };
+        
+        List<SelectListItem>  maritalStatusList = new List<SelectListItem>
+        {
+            new SelectListItem{Text="Single", Value="Single"},
+            new SelectListItem{Text="Married", Value="Married"},
+            new SelectListItem{Text="Divorced", Value="Divorced"},
+            new SelectListItem{Text="Widow", Value="Widow"}
+        };
+
+
+        List<SelectListItem> genderlist = new List<SelectListItem>
+        {
+            new SelectListItem{Text="Male", Value="Male"},
+            new SelectListItem{Text="Female", Value="Female"}
+                    
+        };
+         
         private ClientDBContext db = new ClientDBContext();
      
 
@@ -136,17 +180,23 @@ namespace healthApp.Controllers
         {
             if (hasAdminAccess())
             {
+                ViewBag.clientmaritalStatus = maritalStatusList;
+                ViewBag.clientgender = genderlist;
+                ViewBag.clienttype = clientTypeList;
+                ViewBag.clientinterpreter = interpreterList;
+                ViewBag.clienthearing = hearinglist;
+                ViewBag.clientvision = visionlist;
                 return View();
             }
             return RedirectToAction("Index", "Client");
         }
 
         // POST: /Clients/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable thDefault1e specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( [Bind( Include = "ClientID,ClientFirstName,ClientLastName,ClientMarital,ClientDOB,ClientHealthNum,ClientGender,RoomNumber,ClientFamilyDoc,ClientPicture" )] Client client )
+        public ActionResult Create([Bind(Include = "ClientID,ClientFirstName,ClientLastName,ClientMarital,ClientDOB,ClientHealthNum,ClientGender,RoomNumber,ClientFamilyDoc,ClientPicture,ClientType,ClientSuiteNumber,ClientSuitePhone,ClientPersonalAgent,ClientSafetyConcern,ClientRiskLevel,ClientIndoorMobility,ClientOutdoorMobility,ClientPreferredLanguage,ClientInterpreterRequired,ClientHearing,ClientDoesUnderstand,ClientVision,ClientCurrentMedication,ClientFood,ClientFamilyDoctor,ClientMedication,ClientPharmacist,ClientSpecialDiet,ClientOther,ClientDiagnosis")] Client client)
         {
             if (hasAdminAccess())
             {
@@ -176,6 +226,13 @@ namespace healthApp.Controllers
                 {
                     return RedirectToAction("Index");
                 }
+
+                ViewBag.clientmaritalStatus = maritalStatusList;
+                ViewBag.clientgender = genderlist;
+                ViewBag.clienttype = clientTypeList;
+                ViewBag.clientinterpreter = interpreterList;
+                ViewBag.clienthearing = hearinglist;
+                ViewBag.clientvision = visionlist;
                 return View(client);
             }
             return RedirectToAction("Index", "Client");
@@ -186,7 +243,7 @@ namespace healthApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit( [Bind( Include = "ClientID,ClientFirstName,ClientLastName,ClientMarital,ClientDOB,ClientHealthNum,ClientGender,RoomNumber,ClientFamilyDoc,ClientPicture" )] Client client )
+        public ActionResult Edit([Bind(Include = "ClientID,ClientFirstName,ClientLastName,ClientMarital,ClientDOB,ClientHealthNum,ClientGender,RoomNumber,ClientFamilyDoc,ClientPicture,ClientType,ClientSuiteNumber,ClientSuitePhone,ClientPersonalAgent,ClientSafetyConcern,ClientRiskLevel,ClientIndoorMobility,ClientOutdoorMobility,ClientPreferredLanguage,ClientInterpreterRequired,ClientHearing,ClientDoesUnderstand,ClientVision,ClientCurrentMedication,ClientFood,ClientFamilyDoctor,ClientMedication,ClientPharmacist,ClientSpecialDiet,ClientOther,ClientDiagnosis")] Client client)
         {
             if (hasAdminAccess())
             {
