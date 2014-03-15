@@ -22,7 +22,9 @@ namespace healthApp.Hubs
 
             Chats chat = new Chats();
             chat.Chat = message;
-            chat.UserName = Context.User.Identity.Name.ToString();
+            string cookie = Context.User.Identity.Name.ToString();
+            string[] info = cookie.Split('&');
+            chat.UserName = info[0];
             chat.DateAdded = DateTime.Now;
             
 

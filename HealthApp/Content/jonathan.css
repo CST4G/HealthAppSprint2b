@@ -101,7 +101,7 @@ tr th:last-child {
     border-bottom: 1px dotted #B3A9A9;
 }
    input#btn-input{
-       min-width:290px;
+       min-width:100%;
        max-width:1500px;
    }                     
 
