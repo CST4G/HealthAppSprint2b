@@ -6,25 +6,44 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
-{
+@using ( Html.BeginForm() ) {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Schedule</h4>
         <hr />
-        @Html.ValidationSummary(true)
+        @Html.ValidationSummary( true )
 
         <div class="form-group">
-            @Html.LabelFor(model => model.RoomNo, new { @class = "control-label col-md-2" })
+            @Html.LabelFor( model => model.ClientFirstName, new { @class = "control-label col-md-2" } )
             <div class="col-md-10">
-                @Html.EditorFor(model => model.RoomNo)
-                @Html.ValidationMessageFor(model => model.RoomNo)
+                @Html.EditorFor( model => model.ClientFirstName )
+                @Html.ValidationMessageFor( model => model.ClientFirstName )
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor( model => model.ClientLastName, new { @class = "control-label col-md-2" } )
+            <div class="col-md-10">
+                @Html.EditorFor( model => model.ClientLastName )
+                @Html.ValidationMessageFor( model => model.ClientLastName )
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor( model => model.RoomNo, new { @class = "control-label col-md-2" } )
+            <div class="col-md-10">
+                @Html.EditorFor( model => model.RoomNo )
+                @Html.ValidationMessageFor( model => model.RoomNo )
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Task, new { @class = "control-label col-md-2" })
+            @Html.LabelFor( model => model.Task, new { @class = "control-label col-md-2" } )
             <div class="col-md-10">
                 <select id="Task" name="Task">
                     <option value="medication">Medication</option>
@@ -34,18 +53,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.duration, new { @class = "control-label col-md-2" })
+            @Html.LabelFor( model => model.duration, new { @class = "control-label col-md-2" } )
             <div class="col-md-10">
-                @Html.EditorFor(model => model.duration)
-                @Html.ValidationMessageFor(model => model.duration)
+                @Html.EditorFor( model => model.duration )
+                @Html.ValidationMessageFor( model => model.duration )
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.comments, new { @class = "control-label col-md-2" })
+            @Html.LabelFor( model => model.comments, new { @class = "control-label col-md-2" } )
             <div class="col-md-10">
-                @Html.EditorFor(model => model.comments)
-                @Html.ValidationMessageFor(model => model.comments)
+                @Html.EditorFor( model => model.comments )
+                @Html.ValidationMessageFor( model => model.comments )
             </div>
         </div>
 
@@ -58,5 +77,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink( "Back to List", "Index" )
 </div>

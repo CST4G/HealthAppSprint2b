@@ -101,13 +101,14 @@ namespace healthApp.Controllers
 
                 }
                 Accounts accounts = db.Accounts.Find(id);
+                Credentials credential = Credentials.createFromAccount(accounts);
                 if (accounts == null)
                 {
                     return RedirectToAction("Index");
 
                 }
 
-                return View(accounts);
+                return View(credential);
             }
             else
             {
@@ -137,16 +138,9 @@ namespace healthApp.Controllers
 
             if (hasAdminAccess())
             {
-                if (ModelState.IsValid)
-                {
                     db.Accounts.Add(accounts);
                     db.SaveChanges();
                     return RedirectToAction("Index");
-                }
-                else
-                {
-                    return RedirectToAction("Index", "Home");
-                }
             }
             else
             {

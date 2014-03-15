@@ -48,9 +48,9 @@ namespace healthApp.Models
 
         //Clients bed number: ranging from 1 to 1000
         [Required(ErrorMessage = "This field is required")]
-        [Display(Name = "Bed Number")]
+        [Display(Name = "Room Number")]
         [Range(1, 1000, ErrorMessage = "Must be between 1 and 1000")]
-        public int ClientBedNum { get; set; }
+        public int RoomNumber { get; set; }
 
         //Name of clients family doctor
         [Display(Name = "Family Doctor")]
@@ -58,6 +58,94 @@ namespace healthApp.Models
 
         [Display(Name = "Picture")]
         public byte[] ClientPicture { get; set; }
+
+        //CLients Type
+        [Display(Name = "Client Type")]
+        public string ClientType { get; set; }
+
+        // Suite number
+        [Display(Name = "Suite Number")]
+        public string ClientSuiteNumber { get; set; }
+        
+        // Phone num of the suite
+        [Display(Name = "Suite Phone Num")]
+        public string ClientSuitePhone { get; set; }
+
+        // Personal Agents
+        [Display(Name = "Personal Agent")]
+        public string ClientPersonalAgent { get; set; }
+
+        // Safety Concern
+        [Display(Name = "Safety Concern")]
+        public string ClientSafetyConcern { get; set; }
+
+        // Risk Level
+        [Display(Name = "Risk Level")]
+        public string ClientRiskLevel { get; set; }
+
+        // Indoor Mobility
+        [Display(Name = "Indoor Mobility")]
+        public string ClientIndoorMobility { get; set; }
+
+        // Outdoor Mobility
+        [Display(Name = "Outdoor Mobility")]
+        public string ClientOutdoorMobility { get; set; }
+
+
+        // Preferred Language
+        [Display(Name = "Preferred Language")]
+        public string ClientPreferredLanguage { get; set; }
+
+        // Interpreter Required
+        [Display(Name = "Interpreter Required")]
+        public string ClientInterpreterRequired { get; set; }
+
+        // Hearing
+        [Display(Name = "Hearing")]
+        public string ClientHearing { get; set; }
+
+        // Does Understand
+        [Display(Name = "Does Understand")]
+        public string ClientDoesUnderstand { get; set; }
+
+        // Vision
+        [Display(Name = "Vision")]
+        public string ClientVision { get; set; }
+
+        // Current Medication
+        [Display(Name = "Current Medication")]
+        public string ClientCurrentMedication { get; set; }
+
+        // Food
+        [Display(Name = "Food")]
+        public string ClientFood { get; set; }
+
+        // Family Doctor
+        [Display(Name = "Family Doctor")]
+        public string ClientFamilyDoctor { get; set; }
+
+
+        // Medication
+        [Display(Name = "Medication")]
+        public string ClientMedication { get; set; }
+
+        // Pharmacist
+        [Display(Name = "Pharmacist")]
+        public string ClientPharmacist { get; set; }
+
+        // Special Diet
+        [Display(Name = "Special Diet")]
+        public string ClientSpecialDiet { get; set; }
+
+        // Other 
+        [Display(Name = "Other")]
+        public string ClientOther { get; set; }
+
+
+        // Client Diagnosis 
+        [Display(Name = "Client Diagnosis" )]
+        public string ClientDiagnosis { get; set; }
+
 
         public Client()
         {

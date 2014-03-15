@@ -4,7 +4,6 @@
     ViewBag.Title = "Print Tasks";
 }
 <style type="text/css" media="print">
-    * { visibility: hidden; }
     #tasks { visibility: visible; } 
 </style>
 
@@ -12,7 +11,7 @@
     <table id="tasks" class="table">
         <thead>
             <tr>
-                <th><h1>@ViewBag.User : @ViewBag.ShiftStart to @ViewBag.ShiftEnd</h1></th>
+                <th>@ViewBag.User : @ViewBag.ShiftStart to @ViewBag.ShiftEnd</th>
             </tr>
             <tr>
                 <th>Client ID</th>
@@ -35,9 +34,15 @@
                     
                 </tr>
             </tbody>
-
         }
-
     </table>
-    <input type="button" value="PRINT" onclick="window.print()" />
+    <!--Calling an actionlink so it goes through the crazy mvc overhead-->
+    @Html.ActionLink("Print", "", new { id = "" }, new { id="printButton",@class = "btn btn-default", onclick = "printPage()" })
+    <script>
+        function printPage()
+        {
+            window.print();
+            document.getElementById("printButton").style.display = 'none';
+        }
+    </script> 
 </div>

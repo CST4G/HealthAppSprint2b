@@ -47,10 +47,10 @@
       <HintPath>..\packages\BCrypt.1.0.0.0\lib\DevOne.Security.Cryptography.BCrypt.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.0-beta1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.0-beta1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -153,9 +153,13 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\jonathan.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="Properties\PublishProfiles\cshealthapp - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\cshealthapp - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\cshealthapp - Web Deploy %282%29.pubxml" />
@@ -194,6 +198,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ControllerAuthentication.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PDFFormsController.cs" />
     <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Controllers\UserProfileObj.cs" />
@@ -202,11 +207,25 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\ChatHub.cs" />
+    <Compile Include="Migrations\201403102050267_InitialCreate.cs" />
+    <Compile Include="Migrations\201403102050267_InitialCreate.Designer.cs">
+      <DependentUpon>201403102050267_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403102108216_igor1.cs" />
+    <Compile Include="Migrations\201403102108216_igor1.Designer.cs">
+      <DependentUpon>201403102108216_igor1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403102123319_igor2.cs" />
+    <Compile Include="Migrations\201403102123319_igor2.Designer.cs">
+      <DependentUpon>201403102123319_igor2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Accounts.cs" />
     <Compile Include="Models\Chats.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Credentials.cs" />
     <Compile Include="Models\CustomTaskValidationAttributes.cs" />
+    <Compile Include="Models\PDFForm.cs" />
     <Compile Include="Models\Tasks.cs" />
     <Compile Include="Models\Services.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -248,6 +267,9 @@
     </Content>
     <Content Include="Views\Services\AddServices.cshtml" />
     <Content Include="Views\Tasks\PrintTasks.cshtml" />
+    <Content Include="Views\PDFForms\Create.cshtml" />
+    <Content Include="Views\PDFForms\Delete.cshtml" />
+    <Content Include="Views\PDFForms\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -255,7 +277,17 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201403102050267_InitialCreate.resx">
+      <DependentUpon>201403102050267_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403102108216_igor1.resx">
+      <DependentUpon>201403102108216_igor1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403102123319_igor2.resx">
+      <DependentUpon>201403102123319_igor2.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

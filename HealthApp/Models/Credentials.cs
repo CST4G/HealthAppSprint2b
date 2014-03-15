@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace healthApp.Models
 {
@@ -12,14 +13,14 @@ namespace healthApp.Models
         public string UserName { get; set; }
         public string Password { get; set;}
 
-        //[DisplayName( "First Name" )]
+        [DisplayName( "First Name" )]
         public string fName { get; set; }
 
-        //[DisplayName( "Last Name" )]
+        [DisplayName( "Last Name" )]
         public string lName { get; set; }
 
        // [Required]
-       // [DisplayName( "Account Type" )]
+        [DisplayName( "Account Type" )]
         public string acctType { get; set; }
 
         public static Credentials createFromAccount(Accounts account)
