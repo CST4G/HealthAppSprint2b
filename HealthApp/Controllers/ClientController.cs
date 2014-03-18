@@ -175,6 +175,28 @@ namespace healthApp.Controllers
             return View(client);
         }
 
+        public ActionResult PrintDetails(int id)
+        {
+            ServicesDBContext serviceDB = new ServicesDBContext();
+            ClientDetail cd = new ClientDetail(id, db, serviceDB);
+            if (cd.client == null || cd.services == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(cd);
+        }
+
+        public class ClientDetail
+        {
+            public Services services;
+            public Client client;
+            public ClientDetail(int id, ClientDBContext cdb, ServicesDBContext sdb)
+            {
+                client = cdb.Client.Find(id);
+                services = sdb.Services.Find(id);
+            }
+        }
+
         // GET: /Clients/Create
         public ActionResult Create()
         {

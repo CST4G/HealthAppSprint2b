@@ -270,6 +270,7 @@
     <Content Include="Views\PDFForms\Create.cshtml" />
     <Content Include="Views\PDFForms\Delete.cshtml" />
     <Content Include="Views\PDFForms\Index.cshtml" />
+    <Content Include="Views\Client\PrintDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
