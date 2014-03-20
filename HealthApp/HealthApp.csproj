@@ -160,10 +160,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Properties\PublishProfiles\careassistance.pubxml" />
     <None Include="Properties\PublishProfiles\cshealthapp - FTP %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\cshealthapp - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\cshealthapp - Web Deploy %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\cshealthapp - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Jonathan.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
