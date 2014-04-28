@@ -6,55 +6,32 @@
 
 <h2>Details</h2>
 
-<div>
+<div class="row">
     <h4>Accounts</h4>
 	<hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-           
-        </dt>
+    <div class="col-lg-5">
+        <table class="table">
+            <tr>
+                <td><strong>@Html.DisplayNameFor(model => model.UserName)</strong></td>
+                <td>@Html.DisplayFor(model => model.UserName)</td>
+            </tr>
+            <tr>
+                <td><strong>@Html.DisplayNameFor(model => model.fName)</strong></td>
+                <td>@Html.DisplayFor(model => model.fName)</td>
+            </tr>
+            <tr>
+                <td><strong>@Html.DisplayNameFor(model => model.lName)</strong></td>
+                <td>@Html.DisplayFor(model => model.lName)</td>
+            </tr>
+            <tr>
+                <td><strong>@Html.DisplayNameFor(model => model.acctType)</strong></td>
+                <td>@Html.DisplayFor(model => model.acctType)</td>
+            </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.fName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.fName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.lName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.lName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.acctType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.acctType)
-        </dd>
-
-
-    </dl>
+        </table>
+    </div>
 </div>
-<p>
+<div class="row clearfix">
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</div>
