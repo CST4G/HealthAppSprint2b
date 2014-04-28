@@ -4,10 +4,7 @@
 }
 <div class="col-lg-2"></div>
 <div class=" col-lg-8">
-
-    <h2>Services for Client: @Html.DisplayFor(model => model.First().PatientID)</h2>
-
-    <h4>Tasks</h4>
+    <h2>Services for Client: @Html.DisplayFor(model => model.First().ClientFirstName) @Html.DisplayFor(model => model.First().ClientLastName)</h2>
     @foreach (var item in Model)
     {
         <table class="table table-striped">
@@ -21,32 +18,25 @@
             </thead>
             <tr>
                 <td>
-                    <b>@Html.DisplayNameFor(model => model.PatientID)</b>
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.PatientID)
-                    @{
-        ViewBag.PatientID = (item.PatientID);
-                    }
-                </td>
-                <td>
                     <b> @Html.DisplayNameFor(model => model.RoomNo) </b>
-</td>
+                </td>
                 <td>
                     @Html.DisplayFor(model => item.RoomNo)
                 </td>
+                <td></td>
+                <td></td>
             </tr>
 
             <tr>
                 <td>
                     <b> @Html.DisplayNameFor(model => model.Task) </b>
-</td>
+                </td>
                 <td>
                     @Html.DisplayFor(model => item.Task)
                 </td>
                 <td>
                     <b> @Html.DisplayNameFor(model => model.duration) </b>
-</td>
+                </td>
                 <td>
                     @Html.DisplayFor(model => item.duration)
                 </td>
@@ -55,13 +45,13 @@
             <tr>
                 <td>
                     <b> @Html.DisplayNameFor(model => model.dtStart) </b>
-</td>
+                </td>
                 <td>
                     @Html.DisplayFor(model => item.dtStart)
                 </td>
                 <td>
                     <b>@Html.DisplayNameFor(model => model.dtEnd) </b>
-</td>
+                </td>
                 <td>
                     @Html.DisplayFor(model => item.dtEnd)
                 </td>
@@ -70,39 +60,19 @@
             <tr>
                 <td>
                     <b> @Html.DisplayNameFor(model => model.freq) </b>
-</td>
+                </td>
                 <td>
                     @Html.DisplayFor(model => item.freq)
                 </td>
                 <td>
-                    <b> @Html.DisplayNameFor(model => model.interval) </b>
-</td>
-                <td>
-                    @Html.DisplayFor(model => item.interval)
-                </td>
-            </tr>
-
-            <tr>
-                <td>
                     <b> @Html.DisplayNameFor(model => model.count) </b>
-</td>
+                </td>
                 <td>
                     @Html.DisplayFor(model => item.count)
                 </td>
-                <td>
-                    <b> @Html.DisplayNameFor(model => model.byDay) </b>
-</td>
-                <td>
-                    @Html.DisplayFor(model => item.byDay)
-                </td>
             </tr>
             <tr>
-
-                <td colspan="2">
-                    <b> @Html.DisplayNameFor(model => model.byMonthDay) </b>
-</td>
-                <td colspan="2">
-                    @Html.DisplayFor(model => item.byMonthDay)
+                <td>
                     @Html.ActionLink("Edit this Service", "../Services/Edit", new { id = item.ID })
                 </td>
             </tr>
@@ -110,7 +80,7 @@
         </table>
     }
 
-    @Html.ActionLink("Back to Clients List", "Index", new {id = ""}, new { @class = "btn btn-default"}) 
-    @Html.ActionLink("Back to Client", "../Client/Details/", new { id = ViewBag.PatientID },  new { @class = "btn btn-default"})
+    @Html.ActionLink("Back to Clients List", "Index", new { id = "" }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Back to Client", "Details", new { id = Model.First().PatientID}, new { @class = "btn btn-default" })
 </div>
 <div class="col-lg-2"></div>
