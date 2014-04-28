@@ -42,19 +42,7 @@
             <th>
                 @Html.DisplayNameFor( model => model.freq )
             </th>
-            <th>
-                @Html.DisplayNameFor( model => model.interval )
-            </th>
-            <th>
-                @Html.DisplayNameFor( model => model.count )
-            </th>
-            <th>
-                @Html.DisplayNameFor( model => model.byDay )
-            </th>
-            <th>
-                @Html.DisplayNameFor( model => model.byMonthDay )
-            </th>
-            <th>Options</th>
+            <th></th>
         </tr>
     </thead>
 
@@ -89,18 +77,6 @@
             </td>
             <td>
                 @Html.DisplayFor( modelItem => item.freq )
-            </td>
-            <td>
-                @Html.DisplayFor( modelItem => item.interval )
-            </td>
-            <td>
-                @Html.DisplayFor( modelItem => item.count )
-            </td>
-            <td>
-                @Html.DisplayFor( modelItem => item.byDay )
-            </td>
-            <td>
-                @Html.DisplayFor( modelItem => item.byMonthDay )
             </td>
             <td>
                 @Html.ActionLink( "Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-default", style = "width:7em" } ) <br />

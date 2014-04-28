@@ -46,7 +46,7 @@
                 @Html.DisplayFor(model => model.ClientDOB)
             </td>
             <td>
-                <b>@Html.ActionLink("Details", "Details", new { id = Model.ClientID })</b>
+                
             </td>
         </tr>
         <tr>
@@ -58,8 +58,6 @@
             </td>
 
             <td>
-                <b>@Html.ActionLink("Add Services", "../Services/AddServices", new { id = Model.ClientID, roomNo = Model.RoomNumber })</b>
-
             </td>
         </tr>
         <tr>
@@ -71,8 +69,7 @@
             </td>
 
             <td>
-                <b>@Html.ActionLink("View Subscribed Services", "GetServices", new { id = Model.ClientID })</b>
-
+                
             </td>
         </tr>
         <tr>
@@ -83,7 +80,7 @@
                 @Html.DisplayFor(model => model.RoomNumber)
             </td>
             <td>
-                <b>@Html.ActionLink("Delete", "Delete", new { id = Model.ClientID })</b>
+                
             </td>
         </tr>
         <tr>
@@ -94,7 +91,7 @@
                 @Html.DisplayFor(model => model.ClientFamilyDoc)
             </td>
             <td>
-                <b>@Html.ActionLink("Upload Photo", "UploadPicture", new { id = Model.ClientID })</b>
+                
             </td>
         </tr>
 
@@ -305,11 +302,10 @@
     
 </div>
     
-<p id="detailsLinks">
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ClientID }) |
-    @Html.ActionLink("Back to List", "Index") |
-    @Html.ActionLink("Print", "", new{ id =""}, new { id="printButton", onclick = "printPage()" })
-</p>
+<div id="detailsLinks">
+    <div class="btn btn-default" >@Html.ActionLink("Back", "Index")</div> |
+    <div class="btn btn-default">@Html.ActionLink("Print", "", new { id = "" }, new { id = "printButton", onclick = "printPage()" })</div>
+</div>
 <script>
     function printPage()
     {
